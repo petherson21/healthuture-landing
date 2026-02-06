@@ -1,0 +1,876 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Healthuture Solutions</title>
+  <meta name="description" content="Plataforma digital para gestão de estudos clínicos, participantes e coleta de dados." />
+
+  <style>
+    :root{
+      --bg:#0b1220;
+      --surface:#ffffff;
+      --text:#0f172a;
+      --muted:#475569;
+      --muted2:#64748b;
+
+      --primary:#0f9b91;      /* verde/teal */
+      --primary2:#0b7f77;
+      --ring: rgba(15,155,145,.25);
+
+      --card:#ffffff;
+      --border:#e2e8f0;
+      --shadow: 0 18px 45px rgba(2, 8, 23, .10);
+
+      --radius: 16px;
+      --radius2: 22px;
+
+      --max: 1120px;
+    }
+
+    *{ box-sizing: border-box; }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color: var(--text);
+      background:#f6f8fb;
+    }
+    a{ color:inherit; text-decoration:none; }
+    img{ max-width:100%; display:block; }
+
+    /* ===== Topbar ===== */
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:50;
+      background: rgba(255,255,255,.85);
+      backdrop-filter: blur(10px);
+      border-bottom:1px solid rgba(226,232,240,.7);
+    }
+    .topbar-inner{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 14px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width: 220px;
+    }
+    .brand img{
+      width:32px;
+      height:32px;
+      object-fit:contain;
+    }
+    .brand strong{
+      font-size:18px;
+      letter-spacing:.2px;
+    }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      gap:18px;
+    }
+    .nav a{
+      font-size:14px;
+      color:#0f172a;
+      opacity:.85;
+      padding:8px 10px;
+      border-radius: 10px;
+    }
+    .nav a:hover{ background:#f1f5f9; opacity:1; }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-weight:600;
+      font-size:14px;
+      border:1px solid transparent;
+      cursor:pointer;
+      transition: transform .06s ease, box-shadow .15s ease, background .15s ease;
+      user-select:none;
+      white-space:nowrap;
+    }
+    .btn:active{ transform: translateY(1px); }
+    .btn-primary{
+      background: var(--primary);
+      color:white;
+      box-shadow: 0 12px 30px rgba(15,155,145,.22);
+    }
+    .btn-primary:hover{ background: var(--primary2); }
+    .btn-outline{
+      background:white;
+      border-color: var(--border);
+      color:#0f172a;
+    }
+    .btn-outline:hover{ border-color:#cbd5e1; box-shadow: 0 10px 24px rgba(2,8,23,.08); }
+
+    /* Mobile nav */
+    .hamb{ display:none; }
+    @media (max-width: 860px){
+      .nav{ display:none; }
+      .hamb{ display:inline-flex; }
+      .brand{ min-width: auto; }
+    }
+    .mobile-menu{
+      display:none;
+      padding: 8px 18px 16px;
+      border-top:1px solid rgba(226,232,240,.7);
+    }
+    .mobile-menu a{
+      display:block;
+      padding: 10px 10px;
+      border-radius: 10px;
+      color:#0f172a;
+      opacity:.9;
+    }
+    .mobile-menu a:hover{ background:#f1f5f9; }
+    .mobile-menu .cta{ margin-top:10px; }
+
+    /* ===== Hero ===== */
+    .hero{
+      background:
+        radial-gradient(1200px 600px at 15% 15%, rgba(15,155,145,.35), transparent 60%),
+        radial-gradient(900px 500px at 85% 20%, rgba(10,80,120,.45), transparent 55%),
+        linear-gradient(120deg, #061a2c 0%, #0b3951 35%, #115f5a 100%);
+      color:white;
+      position:relative;
+      overflow:hidden;
+    }
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 10% 90%, rgba(255,255,255,.08) 0 2px, transparent 2px) 0 0/28px 28px,
+        radial-gradient(circle at 90% 20%, rgba(255,255,255,.08) 0 2px, transparent 2px) 0 0/28px 28px;
+      opacity:.6;
+      pointer-events:none;
+    }
+    .hero-inner{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 84px 18px 64px;
+      text-align:center;
+      position:relative;
+    }
+    .hero h1{
+      margin: 0 0 14px;
+      font-size: clamp(36px, 5vw, 64px);
+      line-height:1.05;
+      letter-spacing:-.5px;
+    }
+    .hero p{
+      margin: 0 auto 14px;
+      max-width: 740px;
+      font-size: clamp(16px, 2vw, 20px);
+      opacity: .92;
+    }
+    .hero .sub{
+      margin-top: 16px;
+      opacity:.85;
+      font-size: 16px;
+      max-width: 820px;
+    }
+    .hero-actions{
+      margin-top: 30px;
+      display:flex;
+      gap:14px;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
+    .scroll-down{
+      margin-top: 34px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:42px;
+      height:42px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.25);
+      background: rgba(255,255,255,.08);
+      box-shadow: 0 18px 40px rgba(0,0,0,.2);
+      opacity:.9;
+    }
+    .scroll-down:hover{ opacity:1; }
+
+    /* ===== Sections ===== */
+    section{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 72px 18px;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color: #0f766e;
+      background: rgba(15,155,145,.10);
+      border:1px solid rgba(15,155,145,.18);
+      padding: 8px 12px;
+      border-radius: 999px;
+    }
+    .section-title{
+      margin: 14px 0 12px;
+      font-size: clamp(28px, 3.2vw, 44px);
+      letter-spacing:-.3px;
+      line-height:1.08;
+    }
+    .section-desc{
+      color: var(--muted);
+      max-width: 840px;
+      margin: 0 auto;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* Two column */
+    .grid-2{
+      margin-top: 28px;
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 26px;
+      align-items: stretch;
+    }
+    @media (max-width: 920px){
+      .grid-2{ grid-template-columns: 1fr; }
+    }
+
+    .panel{
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .panel.pad{ padding: 26px; }
+    .panel h3{
+      margin:0 0 10px;
+      font-size: 18px;
+      letter-spacing:-.2px;
+    }
+    .panel p{
+      margin:0 0 14px;
+      color: var(--muted);
+      line-height:1.75;
+      font-size: 15px;
+    }
+
+    /* Cards grid */
+    .cards{
+      margin-top: 34px;
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+    @media (max-width: 1040px){ .cards{ grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px){ .cards{ grid-template-columns: 1fr; } }
+
+    .card{
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius2);
+      box-shadow: 0 18px 40px rgba(2,8,23,.06);
+      padding: 20px;
+      min-height: 190px;
+      transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+    }
+    .card:hover{
+      transform: translateY(-2px);
+      border-color:#cbd5e1;
+      box-shadow: 0 24px 60px rgba(2,8,23,.10);
+    }
+    .icon{
+      width:44px;
+      height:44px;
+      border-radius: 14px;
+      background: rgba(15,155,145,.12);
+      border: 1px solid rgba(15,155,145,.20);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin-bottom: 14px;
+    }
+    .card h4{
+      margin:0 0 8px;
+      font-size:16px;
+      letter-spacing:-.2px;
+    }
+    .card p{
+      margin:0;
+      color: var(--muted2);
+      line-height:1.65;
+      font-size: 14px;
+    }
+
+    /* Security layout */
+    .security-wrap{
+      margin-top: 28px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+    @media (max-width: 920px){
+      .security-wrap{ grid-template-columns: 1fr; }
+    }
+    .security-img{
+      min-height: 320px;
+      background:
+        linear-gradient(120deg, rgba(15,155,145,.18), rgba(2, 132, 199, .10)),
+        url("assets/security.jpg") center/cover no-repeat;
+    }
+    .list{
+      display:flex;
+      flex-direction:column;
+      gap: 14px;
+      padding: 22px;
+    }
+    .list-item{
+      display:flex;
+      gap: 12px;
+      align-items:flex-start;
+      padding: 14px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: #fff;
+    }
+    .dot{
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      background: rgba(15,155,145,.12);
+      border: 1px solid rgba(15,155,145,.20);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex: 0 0 auto;
+      margin-top: 2px;
+    }
+    .list-item h5{
+      margin:0 0 4px;
+      font-size: 14.5px;
+      letter-spacing:-.2px;
+    }
+    .list-item p{
+      margin:0;
+      color: var(--muted2);
+      font-size: 13.5px;
+      line-height:1.6;
+    }
+
+    /* CTA band */
+    .cta-band{
+      background: linear-gradient(120deg, rgba(15,155,145,.18), rgba(2,132,199,.10));
+      border: 1px solid rgba(15,155,145,.18);
+      border-radius: 24px;
+      padding: 34px 22px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 16px;
+      box-shadow: 0 18px 40px rgba(2,8,23,.06);
+    }
+    @media (max-width: 860px){
+      .cta-band{ flex-direction:column; text-align:center; }
+    }
+    .cta-band h3{
+      margin:0 0 6px;
+      font-size: 22px;
+      letter-spacing:-.3px;
+    }
+    .cta-band p{
+      margin:0;
+      color: var(--muted);
+      line-height:1.6;
+      max-width: 700px;
+    }
+
+    /* Contact */
+    .contact-grid{
+      margin-top: 30px;
+      display:grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 18px;
+    }
+    @media (max-width: 920px){
+      .contact-grid{ grid-template-columns: 1fr; }
+    }
+    .contact-card{
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      padding: 22px;
+    }
+    .info-item{
+      display:flex;
+      gap: 12px;
+      align-items:flex-start;
+      padding: 12px 0;
+      border-bottom: 1px dashed #e2e8f0;
+    }
+    .info-item:last-child{ border-bottom:none; }
+    .info-item b{ display:block; font-size: 13px; }
+    .info-item span{ color: var(--muted2); font-size: 13px; }
+
+    form{
+      display:grid;
+      gap: 12px;
+    }
+    label{
+      font-size: 12px;
+      font-weight: 700;
+      color:#0f172a;
+      letter-spacing:.02em;
+    }
+    input, textarea{
+      width:100%;
+      padding: 12px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      outline: none;
+      font-size: 14px;
+      background: #fff;
+    }
+    input:focus, textarea:focus{
+      border-color: rgba(15,155,145,.55);
+      box-shadow: 0 0 0 4px var(--ring);
+    }
+    textarea{ min-height: 130px; resize: vertical; }
+
+    /* Footer */
+    footer{
+      background: #0a1f2d;
+      color: rgba(255,255,255,.90);
+      margin-top: 24px;
+    }
+    .footer-inner{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 44px 18px;
+      display:grid;
+      grid-template-columns: 1.3fr 1fr 1fr 1fr;
+      gap: 18px;
+    }
+    @media (max-width: 920px){
+      .footer-inner{ grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 520px){
+      .footer-inner{ grid-template-columns: 1fr; }
+    }
+    .footer-col h6{
+      margin: 0 0 10px;
+      font-size: 12px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color: rgba(255,255,255,.70);
+    }
+    .footer-col a{
+      display:block;
+      padding: 6px 0;
+      color: rgba(255,255,255,.85);
+      font-size: 14px;
+    }
+    .footer-col a:hover{ color:#fff; }
+    .copyright{
+      border-top: 1px solid rgba(255,255,255,.12);
+      padding: 14px 18px;
+      text-align:center;
+      color: rgba(255,255,255,.65);
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Topbar -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#home" aria-label="Healthuture Solutions">
+        <img src="assets/logo.png" alt="Logo Healthuture Solutions">
+        <strong>Healthuture Solutions</strong>
+      </a>
+
+      <nav class="nav" aria-label="Navegação principal">
+        <a href="#sobre">Sobre</a>
+        <a href="#funcionalidades">Funcionalidades</a>
+        <a href="#seguranca">Segurança</a>
+        <a href="#para-quem-e">Para quem é</a>
+        <a class="btn btn-primary" href="#contato">Contato</a>
+      </nav>
+
+      <button class="btn btn-outline hamb" id="hamb" aria-label="Abrir menu">Menu</button>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#sobre">Sobre</a>
+      <a href="#funcionalidades">Funcionalidades</a>
+      <a href="#seguranca">Segurança</a>
+      <a href="#para-quem-e">Para quem é</a>
+      <div class="cta">
+        <a class="btn btn-primary" href="#contato" style="width:100%;">Contato</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="home" style="max-width:none; padding:0;">
+    <div class="hero-inner">
+      <h1>Healthuture Solutions</h1>
+
+      <p>Plataforma digital para gestão de estudos clínicos, participantes e coleta de dados.</p>
+      <p class="sub">
+        Simplifique processos, organize informações e acompanhe estudos clínicos com segurança, agilidade e conformidade.
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#contato">✅ Solicitar Demonstração</a>
+        <a class="btn btn-outline" href="mailto:suporte@healthuturesolutions.com.br?subject=Suporte%20-%20Healthuture%20Solutions">🛠️ Falar com o Suporte</a>
+      </div>
+
+      <a class="scroll-down" href="#sobre" aria-label="Ir para seção Sobre">
+        ↓
+      </a>
+    </div>
+  </section>
+
+  <!-- Sobre -->
+  <section id="sobre">
+    <div style="text-align:left;">
+      <span class="pill">Sobre nós</span>
+      <h2 class="section-title">O que é a Healthuture Solutions?</h2>
+    </div>
+
+    <div class="grid-2">
+      <div class="panel pad">
+        <p>
+          A Healthuture Solutions é uma startup dedicada ao desenvolvimento de soluções digitais para a área da saúde.
+          Nosso principal produto é uma plataforma voltada para hospitais, clínicas e equipes de pesquisa clínica,
+          criada para centralizar, automatizar e otimizar a gestão de estudos clínicos, o registro de participantes
+          e a coleta de dados.
+        </p>
+        <p>
+          Nossa missão é transformar a forma como instituições de saúde conduzem e gerenciam pesquisas clínicas,
+          oferecendo uma plataforma completa que une tecnologia avançada, simplicidade operacional e alta confiabilidade.
+          Atuamos para garantir segurança da informação, rastreabilidade e conformidade regulatória em todas as etapas do processo.
+        </p>
+      </div>
+
+      <div class="panel">
+        <!-- Troque pela imagem que quiser: login da plataforma, laboratório, etc -->
+        <div style="height:100%; min-height:320px; background:
+          linear-gradient(120deg, rgba(15,155,145,.10), rgba(2,132,199,.08)),
+          url('assets/about.jpg') center/cover no-repeat;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Funcionalidades -->
+  <section id="funcionalidades" style="text-align:center;">
+    <span class="pill">Funcionalidades</span>
+    <h2 class="section-title">Principais recursos</h2>
+    <p class="section-desc">Uma plataforma completa com as ferramentas necessárias para gerenciar estudos clínicos de forma eficiente e segura.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="icon">👤</div>
+        <h4>Cadastro e gerenciamento de pacientes</h4>
+        <p>Sistema completo para registro e acompanhamento de participantes em estudos clínicos com interface intuitiva.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">🧪</div>
+        <h4>Gestão de estudos clínicos</h4>
+        <p>Controle total sobre estudos em andamento, com organização de informações e cronogramas.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">❤️</div>
+        <h4>Registro de sintomas e coleta de dados</h4>
+        <p>Coleta estruturada de dados clínicos com formulários personalizáveis e rastreabilidade.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">📝</div>
+        <h4>Aplicação de questionários</h4>
+        <p>Ferramentas para avaliação técnica e consulta de dados por questionários customizados.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">📄</div>
+        <h4>Gestão de termos e documentos</h4>
+        <p>Upload, controle de aceite e gerenciamento completo de documentos e termos de consentimento.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">🔐</div>
+        <h4>Controle de acesso por perfil</h4>
+        <p>Permissões granulares para administradores e usuários com diferentes níveis de acesso.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">📊</div>
+        <h4>Relatórios personalizáveis</h4>
+        <p>Relatórios com filtros avançados para análise de dados e suporte à tomada de decisão.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">🗂️</div>
+        <h4>Centralização de dados</h4>
+        <p>Todos os dados em um único lugar, facilitando o acesso e a gestão de informações críticas.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Segurança -->
+  <section id="seguranca" style="text-align:center;">
+    <span class="pill">Segurança e conformidade</span>
+    <h2 class="section-title">Segurança em primeiro lugar</h2>
+    <p class="section-desc">Nosso sistema é desenvolvido com foco em segurança, privacidade e boas práticas para proteção de dados sensíveis.</p>
+
+    <div class="security-wrap">
+      <div class="panel security-img" aria-label="Imagem ilustrativa de segurança"></div>
+
+      <div class="panel">
+        <div class="list">
+          <div class="list-item">
+            <div class="dot">✅</div>
+            <div>
+              <h5>Controle de acesso e autenticação seguras</h5>
+              <p>Autenticação robusta e camadas de segurança para proteger dados sensíveis.</p>
+            </div>
+          </div>
+
+          <div class="list-item">
+            <div class="dot">🧾</div>
+            <div>
+              <h5>Registro de atividades (auditoria)</h5>
+              <p>Rastreabilidade de ações relevantes para transparência, controle e conformidade.</p>
+            </div>
+          </div>
+
+          <div class="list-item">
+            <div class="dot">🛡️</div>
+            <div>
+              <h5>Estrutura preparada para LGPD</h5>
+              <p>Arquitetura pensada para boas práticas de privacidade e proteção de dados.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Para quem é -->
+  <section id="para-quem-e" style="text-align:center;">
+    <span class="pill">Para quem é</span>
+    <h2 class="section-title">Indicado para</h2>
+    <p class="section-desc">Nossa plataforma foi desenvolvida para atender necessidades específicas de diferentes profissionais e instituições na área da pesquisa clínica.</p>
+
+    <div class="cards" style="grid-template-columns: repeat(4, 1fr);">
+      <div class="card">
+        <div class="icon">🏥</div>
+        <h4>Hospitais e clínicas</h4>
+        <p>Instituições de saúde que precisam de organização e rastreabilidade no acompanhamento de estudos.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">🔬</div>
+        <h4>Centros de pesquisa clínica</h4>
+        <p>Controle de estudos e coleta estruturada de dados em um único ambiente.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">🧑‍⚕️</div>
+        <h4>CROs e coordenadores</h4>
+        <p>Organização de pesquisas e gestão de múltiplos estudos simultaneamente.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">📋</div>
+        <h4>Equipes de acompanhamento</h4>
+        <p>Monitoramento de participantes e suporte ao registro consistente de informações clínicas.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="padding-top: 0;">
+    <div class="cta-band">
+      <div>
+        <h3>Pronto para transformar sua gestão de estudos clínicos?</h3>
+        <p>Entre em contato e descubra como a Healthuture Solutions pode otimizar seus processos de pesquisa clínica.</p>
+      </div>
+      <a class="btn btn-primary" href="#contato">Falar com nossa equipe</a>
+    </div>
+  </section>
+
+  <!-- Contato -->
+  <section id="contato" style="text-align:center;">
+    <span class="pill">Contato</span>
+    <h2 class="section-title">Entre em contato</h2>
+    <p class="section-desc">Estamos prontos para ajudar você a transformar a gestão de estudos clínicos na sua instituição.</p>
+
+    <div class="contact-grid">
+      <div class="contact-card" style="text-align:left;">
+        <h3 style="margin:0 0 12px;">Informações de contato</h3>
+
+        <div class="info-item">
+          <div class="dot">✉️</div>
+          <div>
+            <b>Email</b>
+            <span>contato@healthuturesolutions.com.br</span>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="dot">📍</div>
+          <div>
+            <b>Localização</b>
+            <span>São Paulo - SP | Brasil</span>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="dot">🕘</div>
+          <div>
+            <b>Horário de atendimento</b>
+            <span>Segunda a Sexta: 9h às 18h</span>
+          </div>
+        </div>
+
+        <div class="panel" style="margin-top:16px; overflow:hidden;">
+          <div style="height: 220px; background:
+            linear-gradient(120deg, rgba(15,155,145,.10), rgba(2,132,199,.08)),
+            url('assets/building.jpg') center/cover no-repeat;">
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-card" style="text-align:left;">
+        <h3 style="margin:0 0 12px;">Envie uma mensagem</h3>
+
+        <!-- Opção 1 (recomendada): Formspree (grátis) -->
+        <!-- 1) crie uma conta em formspree.io
+             2) pegue seu endpoint e troque no action="" -->
+        <form action="https://formspree.io/f/SEU_ID_AQUI" method="POST">
+          <div>
+            <label for="nome">Nome completo *</label>
+            <input id="nome" name="nome" placeholder="Seu nome" required />
+          </div>
+
+          <div>
+            <label for="email">Email *</label>
+            <input id="email" name="email" type="email" placeholder="seu@email.com" required />
+          </div>
+
+          <div>
+            <label for="telefone">Telefone</label>
+            <input id="telefone" name="telefone" placeholder="(11) 9XXXX-XXXX" />
+          </div>
+
+          <div>
+            <label for="empresa">Instituição/Empresa</label>
+            <input id="empresa" name="empresa" placeholder="Nome da instituição" />
+          </div>
+
+          <div>
+            <label for="mensagem">Mensagem *</label>
+            <textarea id="mensagem" name="mensagem" placeholder="Como podemos ajudar você?" required></textarea>
+          </div>
+
+          <button class="btn btn-primary" type="submit" style="width:100%;">Enviar mensagem</button>
+
+          <p style="margin:8px 0 0; color:var(--muted2); font-size:12.5px;">
+            Ao enviar, você concorda com nossa Política de Privacidade.
+          </p>
+        </form>
+
+        <!-- Opção 2 (sem serviço externo): usar mailto
+             (descomente e remova o form acima se preferir)
+        <a class="btn btn-primary" style="width:100%; margin-top:10px;"
+           href="mailto:contato@healthuturesolutions.com.br?subject=Contato%20-%20Healthuture%20Solutions">
+           Enviar por e-mail
+        </a>
+        -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-col">
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+          <img src="assets/logo.png" alt="Logo" style="width:28px; height:28px;">
+          <strong>Healthuture Solutions</strong>
+        </div>
+        <p style="margin:0; color: rgba(255,255,255,.75); line-height:1.7; max-width: 360px;">
+          Plataforma digital para gestão de estudos clínicos com segurança, agilidade e conformidade.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h6>Navegação</h6>
+        <a href="#sobre">Sobre</a>
+        <a href="#funcionalidades">Funcionalidades</a>
+        <a href="#seguranca">Segurança</a>
+        <a href="#contato">Contato</a>
+      </div>
+
+      <div class="footer-col">
+        <h6>Contato</h6>
+        <a href="mailto:contato@healthuturesolutions.com.br">contato@healthuturesolutions.com.br</a>
+        <a href="#">São Paulo - SP | Brasil</a>
+      </div>
+
+      <div class="footer-col">
+        <h6>Legal</h6>
+        <a href="/politica-de-privacidade.html">Política de Privacidade</a>
+        <a href="/termos-de-uso.html">Termos de Uso</a>
+      </div>
+    </div>
+
+    <div class="copyright">
+      © 2026 Healthuture Solutions. Todos os direitos reservados.
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu
+    const hamb = document.getElementById('hamb');
+    const menu = document.getElementById('mobileMenu');
+    hamb?.addEventListener('click', () => {
+      const open = menu.style.display === 'block';
+      menu.style.display = open ? 'none' : 'block';
+      hamb.textContent = open ? 'Menu' : 'Fechar';
+    });
+
+    // Close mobile menu when clicking an anchor
+    menu?.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        menu.style.display = 'none';
+        hamb.textContent = 'Menu';
+      });
+    });
+  </script>
+</body>
+</html>
