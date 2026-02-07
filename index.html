@@ -780,51 +780,52 @@
         <div class="contact-card" style="text-align:left;">
         <h3 style="margin:0 0 12px;">Envie uma mensagem</h3>
 
-        <!-- Opção 1 (recomendada): Formspree (grátis) -->
-        <!-- 1) crie uma conta em formspree.io
-             2) pegue seu endpoint e troque no action="" -->
-        <form action="https://formspree.io/f/SEU_ID_AQUI" method="POST">
-          <div>
-            <label for="nome">Nome completo *</label>
-            <input id="nome" name="nome" placeholder="Seu nome" required />
-          </div>
+        <form action="https://api.web3forms.com/submit" method="POST">
 
-          <div>
-            <label for="email">Email *</label>
-            <input id="email" name="email" type="email" placeholder="seu@email.com" required />
-          </div>
+  <!-- Web3Forms Access Key -->
+  <input type="hidden" name="access_key" value="58f66871-880e-4ded-9111-8209940646e5">
 
-          <div>
-            <label for="telefone">Telefone</label>
-            <input id="telefone" name="telefone" placeholder="(11) 9XXXX-XXXX" />
-          </div>
+  <!-- Configurações opcionais -->
+  <input type="hidden" name="subject" value="Novo contato - Healthuture Solutions">
+  <input type="hidden" name="from_name" value="Healthuture Solutions - Site">
+  <input type="hidden" name="redirect" value="https://www.healthuturesolutions.com.br/obrigado.html">
 
-          <div>
-            <label for="empresa">Instituição/Empresa</label>
-            <input id="empresa" name="empresa" placeholder="Nome da instituição" />
-          </div>
+  <!-- Anti-spam -->
+  <input type="checkbox" name="botcheck" style="display:none;">
 
-          <div>
-            <label for="mensagem">Mensagem *</label>
-            <textarea id="mensagem" name="mensagem" placeholder="Como podemos ajudar você?" required></textarea>
-          </div>
+  <div>
+    <label for="nome">Nome completo *</label>
+    <input id="nome" name="nome" placeholder="Seu nome" required />
+  </div>
 
-          <button class="btn btn-primary" type="submit" style="width:100%;">Enviar mensagem</button>
+  <div>
+    <label for="email">Email *</label>
+    <input id="email" name="email" type="email" placeholder="seu@email.com" required />
+  </div>
 
-          <p style="margin:8px 0 0; color:var(--muted2); font-size:12.5px;">
-            Ao enviar, você concorda com nossa Política de Privacidade.
-          </p>
-        </form>
+  <div>
+    <label for="telefone">Telefone</label>
+    <input id="telefone" name="telefone" placeholder="(11) 9XXXX-XXXX" />
+  </div>
 
-        <!-- Opção 2 (sem serviço externo): usar mailto
-             (descomente e remova o form acima se preferir)
-        <a class="btn btn-primary" style="width:100%; margin-top:10px;"
-           href="mailto:contato@healthuturesolutions.com.br?subject=Contato%20-%20Healthuture%20Solutions">
-           Enviar por e-mail
-        </a>
-        -->
-      </div>
-    </div>
+  <div>
+    <label for="empresa">Instituição/Empresa</label>
+    <input id="empresa" name="empresa" placeholder="Nome da instituição" />
+  </div>
+
+  <div>
+    <label for="mensagem">Mensagem *</label>
+    <textarea id="mensagem" name="mensagem" placeholder="Como podemos ajudar você?" required></textarea>
+  </div>
+
+  <button class="btn btn-primary" type="submit" style="width:100%;">Enviar mensagem</button>
+
+  <p style="margin:8px 0 0; color:var(--muted2); font-size:12.5px;">
+    Ao enviar, você concorda com nossa Política de Privacidade.
+  </p>
+
+</form>
+
   </section>
 
   <!-- Footer -->
@@ -886,6 +887,7 @@
   </script>
 </body>
 </html>
+
 
 
 
