@@ -60,7 +60,7 @@
       align-items:center;
       justify-content:space-between;
       gap:16px;
-      height: 80px;
+      height:72px;
     }
     .brand{
       display:flex;
@@ -69,9 +69,10 @@
       min-width: 220px;
     }
     .brand img{
-      width:150px;
-      height:150px;
+      width:44px;
+      height:44px;
       object-fit:contain;
+      flex-shrink:0;
     }
     .brand strong{
       font-size:18px;
@@ -508,9 +509,12 @@
   <!-- Topbar -->
   <header class="topbar">
     <div class="topbar-inner">
-        <img src="assets/logo.png" alt="Logo Healthuture Solutions">
-        <strong>Healthuture Solutions</strong>
-      </a>
+        <a class="brand" href="#home" aria-label="Healthuture Solutions - Início">
+  <img src="assets/logo.png" alt="Logo Healthuture Solutions">
+  <strong>Healthuture Solutions</strong>
+</a>
+
+      
 
       <nav class="nav" aria-label="Navegação principal">
         <a href="#sobre">Sobre</a>
@@ -820,7 +824,7 @@
   <button class="btn btn-primary" type="submit" style="width:100%;">Enviar mensagem</button>
 
   <p style="margin:8px 0 0; color:var(--muted2); font-size:12.5px;">
-    Ao enviar, você concorda com nossa Política de Privacidade.
+    Ao enviar, você concorda com nossa <a href="politica-de-privacidade.html" target="_blank" rel="noopener" style="text-decoration:underline;">Política de Privacidade</a>.
   </p>
 
 </form>
@@ -856,8 +860,8 @@
 
       <div class="footer-col">
         <h6>Legal</h6>
-        <a href="/politica-de-privacidade.html">Política de Privacidade</a>
-        <a href="/termos-de-uso.html">Termos de Uso</a>
+        <a href="politica-de-privacidade.html" target="_blank" rel="noopener">Política de Privacidade</a>
+        <a href="termos-de-uso.html" target="_blank" rel="noopener">Termos de Uso</a>
       </div>
     </div>
 
@@ -886,19 +890,6 @@
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
