@@ -374,15 +374,17 @@
       .shot {
         margin: 0;
         height: 100%;
-        display: grid;
-        grid-template-rows: 1fr auto;
+        display: flex;
+        flex-direction: column;
         background: linear-gradient(120deg, rgba(8, 145, 178, 0.12), rgba(33, 101, 170, 0.08));
       }
       .shot img {
         width: 100%;
-        height: 100%;
-        min-height: 360px;
-        object-fit: cover;
+        height: auto;
+        max-height: 560px;
+        object-fit: contain; /* avoid cropping screenshots */
+        background: rgba(255, 255, 255, 0.7);
+        padding: 12px;
       }
       .shot figcaption {
         padding: 14px 16px;
@@ -760,7 +762,7 @@
           <div class="panel">
             <figure class="shot">
               <img
-                src="assets/worklist.png"
+                src="worklist.png"
                 alt="Exemplo de tela da plataforma Healthuture"
                 loading="lazy"
                 onerror="this.onerror=null; this.src='assets/worklist.svg';"
@@ -768,6 +770,43 @@
               <figcaption>
                 Visão rápida: acompanhe estudos, participantes e pendências em
                 um único painel.
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- Participante -->
+      <section id="participante" style="text-align: center">
+        <span class="pill">Participante</span>
+        <h2 class="section-title">Experiência do participante</h2>
+        <p class="section-desc">
+          Uma jornada simples e segura para aceitar termos, responder questionários e
+          registrar informações ao longo do estudo.
+        </p>
+
+        <div class="grid-2" style="text-align: left">
+          <div class="panel pad">
+            <h3 style="margin-top: 0">Fluxo claro, do termo ao acompanhamento</h3>
+            <p>
+              O participante acessa a plataforma, revisa e aceita os termos necessários e,
+              em seguida, realiza as tarefas do estudo com orientação e rastreabilidade.
+            </p>
+            <p style="margin-bottom: 0">
+              Isso reduz fricção, melhora adesão e facilita o acompanhamento pela equipe.
+            </p>
+          </div>
+
+          <div class="panel">
+            <figure class="shot">
+              <img
+                src="participante.png"
+                alt="Tela do participante na plataforma Healthuture"
+                loading="lazy"
+                onerror="this.onerror=null; this.src='assets/worklist.svg';"
+              />
+              <figcaption>
+                Exemplo de interface do participante (imagem ilustrativa).
               </figcaption>
             </figure>
           </div>
