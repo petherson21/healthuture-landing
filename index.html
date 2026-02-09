@@ -12,8 +12,8 @@
     <title>Healthuture Solutions</title>
 
     <!-- Favicons (SVG first; optional PNG/ICO can be added later) -->
-    <link rel="icon" type="image/svg+xml" href="assets/favicon.ico" />
-    <link rel="apple-touch-icon" href="assets/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+    <link rel="apple-touch-icon" href="assets/favicon.svg" />
 
     <!-- Social -->
     <meta property="og:type" content="website" />
@@ -125,8 +125,8 @@
         min-width: 220px;
       }
       .brand img {
-        width: 110px;
-        height: 110px;
+        width: 52px;
+        height: 52px;
         object-fit: contain;
         flex-shrink: 0;
       }
@@ -408,6 +408,27 @@
       @media (max-width: 560px) {
         .cards {
           grid-template-columns: 1fr;
+        }
+      }
+
+      /* Horizontal cards on mobile (only where applied) */
+      .cards.cards-scroll {
+        /* desktop/tablet keep default grid */
+      }
+      @media (max-width: 700px) {
+        .cards.cards-scroll {
+          grid-template-columns: none;
+          grid-auto-flow: column;
+          grid-auto-columns: minmax(260px, 82vw);
+          overflow-x: auto;
+          overflow-y: hidden;
+          -webkit-overflow-scrolling: touch;
+          scroll-snap-type: x mandatory;
+          overscroll-behavior-x: contain;
+          padding-bottom: 10px; /* breathing room for scrollbar */
+        }
+        .cards.cards-scroll .card {
+          scroll-snap-align: start;
         }
       }
 
@@ -762,7 +783,7 @@
           <div class="panel">
             <figure class="shot">
               <img
-                src="assets/worklist.png"
+                src="worklist.png"
                 alt="Exemplo de tela da plataforma Healthuture"
                 loading="lazy"
                 onerror="this.onerror=null; this.src='assets/worklist.svg';"
@@ -800,7 +821,7 @@
           <div class="panel">
             <figure class="shot">
               <img
-                src="assets/participante.png"
+                src="participante.png"
                 alt="Tela do participante na plataforma Healthuture"
                 loading="lazy"
                 onerror="this.onerror=null; this.src='assets/worklist.svg';"
@@ -956,7 +977,7 @@
           pesquisa clínica.
         </p>
 
-        <div class="cards" style="grid-template-columns: repeat(4, 1fr)">
+        <div class="cards cards-scroll" style="grid-template-columns: repeat(4, 1fr)">
           <div class="card">
             <div class="icon">🏥</div>
             <h4>Hospitais e clínicas</h4>
@@ -1230,5 +1251,3 @@
     </script>
   </body>
 </html>
-
-
