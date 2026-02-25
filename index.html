@@ -3,29 +3,81 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- SEO -->
+    <title>Plataforma de Gestão de Estudos Clínicos | Healthuture Solutions</title>
     <meta
       name="description"
-      content="Plataforma digital para gestão de estudos clínicos, participantes e coleta de dados."
+      content="Software especializado em gestão de estudos clínicos para hospitais e centros de pesquisa. Controle de participantes, auditoria, questionários, registro de sintomas/eventos adversos e conformidade com LGPD."
     />
+    <link rel="canonical" href="https://healthuturesolutions.com.br/" />
+
     <meta name="theme-color" content="#2165aa" />
+    <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
 
-    <title>Healthuture Solutions</title>
-
-    <!-- Favicons (SVG first; optional PNG/ICO can be added later) -->
-    <link rel="icon" type="image/svg+xml" href="assets/favicon.ico" />
+    <!-- Favicons -->
+    <link rel="icon" href="assets/favicon.ico" />
     <link rel="apple-touch-icon" href="assets/favicon.ico" />
 
-    <!-- Social -->
+    <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Healthuture Solutions" />
+    <meta property="og:site_name" content="Healthuture Solutions" />
+    <meta property="og:title" content="Plataforma de Gestão de Estudos Clínicos | Healthuture Solutions" />
     <meta
       property="og:description"
-      content="Plataforma digital para gestão de estudos clínicos, participantes e coleta de dados."
+      content="Software especializado em gestão de estudos clínicos para hospitais e centros de pesquisa. Auditoria, questionários, registro de sintomas e relatórios com segurança e rastreabilidade."
     />
+    <meta property="og:url" content="https://healthuturesolutions.com.br/" />
+    <meta property="og:image" content="https://healthuturesolutions.com.br/assets/logo.png" />
+    <meta property="og:image:alt" content="Logo Healthuture Solutions" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Plataforma de Gestão de Estudos Clínicos | Healthuture Solutions" />
+    <meta
+      name="twitter:description"
+      content="Gestão de estudos clínicos com auditoria, questionários, registro de sintomas/eventos adversos e conformidade LGPD."
+    />
+    <meta name="twitter:image" content="https://healthuturesolutions.com.br/assets/logo.png" />
+
+    <!-- Schema (SEO avançado) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://healthuturesolutions.com.br/#org",
+            "name": "Healthuture Solutions",
+            "url": "https://healthuturesolutions.com.br/",
+            "logo": "https://healthuturesolutions.com.br/assets/logo.png",
+            "sameAs": ["https://www.linkedin.com/company/healthuture-solutions/"]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://healthuturesolutions.com.br/#website",
+            "url": "https://healthuturesolutions.com.br/",
+            "name": "Healthuture Solutions",
+            "publisher": { "@id": "https://healthuturesolutions.com.br/#org" },
+            "inLanguage": "pt-BR"
+          },
+          {
+            "@type": "SoftwareApplication",
+            "@id": "https://healthuturesolutions.com.br/#app",
+            "name": "Healthuture Solutions",
+            "operatingSystem": "Web",
+            "applicationCategory": "MedicalBusinessApplication",
+            "description": "Software especializado em gestão de estudos clínicos para hospitais e centros de pesquisa, com auditoria, questionários, registro de sintomas/eventos adversos e relatórios.",
+            "url": "https://healthuturesolutions.com.br/",
+            "publisher": { "@id": "https://healthuturesolutions.com.br/#org" }
+          }
+        ]
+      }
+    </script>
 
     <style>
       :root {
-        /* Brand (aligned with frontend palette found in health-research-frontend/src/assets/css/) */
+        /* Brand */
         --primary: #2165aa;
         --primary2: #105282;
         --accent: #0891b2;
@@ -258,8 +310,8 @@
       }
       .hero h1 {
         margin: 0 0 14px;
-        font-size: clamp(36px, 5vw, 64px);
-        line-height: 1.05;
+        font-size: clamp(34px, 4.6vw, 56px);
+        line-height: 1.08;
         letter-spacing: -0.5px;
       }
       .hero p {
@@ -382,7 +434,7 @@
         width: 100%;
         height: auto;
         max-height: 560px;
-        object-fit: contain; /* avoid cropping screenshots */
+        object-fit: contain;
         background: rgba(255, 255, 255, 0.7);
         padding: 12px;
       }
@@ -411,9 +463,7 @@
         }
       }
 
-      /* Horizontal cards on mobile (only where applied) */
       .cards.cards-scroll {
-        /* desktop/tablet keep default grid */
       }
       @media (max-width: 700px) {
         .cards.cards-scroll {
@@ -425,7 +475,7 @@
           -webkit-overflow-scrolling: touch;
           scroll-snap-type: x mandatory;
           overscroll-behavior-x: contain;
-          padding-bottom: 10px; /* breathing room for scrollbar */
+          padding-bottom: 10px;
         }
         .cards.cards-scroll .card {
           scroll-snap-align: start;
@@ -676,10 +726,15 @@
       }
     </style>
 
-    <!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=G-MN69C21FH7">
-      
-    </script> 
-    <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-MN69C21FH7'); 
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MN69C21FH7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-MN69C21FH7");
     </script>
   </head>
 
@@ -724,9 +779,7 @@
         <a href="#seguranca">Segurança</a>
         <a href="#para-quem-e">Para quem é</a>
         <div class="cta">
-          <a class="btn btn-primary" href="#contato" style="width: 100%"
-            >Contato</a
-          >
+          <a class="btn btn-primary" href="#contato" style="width: 100%">Contato</a>
         </div>
       </div>
     </header>
@@ -735,11 +788,12 @@
       <!-- Hero -->
       <section class="hero" id="home" style="max-width: none; padding: 0">
         <div class="hero-inner">
-          <h1>Healthuture Solutions</h1>
+          <!-- H1 otimizado para ranqueamento -->
+          <h1>Plataforma de Gestão de Estudos Clínicos para Hospitais e Centros de Pesquisa</h1>
 
           <p>
-            Plataforma digital para gestão de estudos clínicos, participantes e
-            coleta de dados.
+            Healthuture Solutions — gestão de participantes, coleta de dados,
+            questionários, auditoria e rastreabilidade.
           </p>
           <p class="sub">
             Simplifique processos, organize informações e acompanhe estudos
@@ -748,14 +802,10 @@
 
           <div class="hero-actions">
             <a class="btn btn-primary" href="#contato">Solicitar Demonstração</a>
-            <a class="btn btn-outline" href="#funcionalidades"
-              >Ver funcionalidades</a
-            >
+            <a class="btn btn-outline" href="#funcionalidades">Ver funcionalidades</a>
           </div>
 
-          <a class="scroll-down" href="#sobre" aria-label="Ir para seção Sobre">
-            ↓
-          </a>
+          <a class="scroll-down" href="#sobre" aria-label="Ir para seção Sobre"> ↓ </a>
         </div>
       </section>
 
@@ -795,8 +845,7 @@
                 onerror="this.onerror=null; this.src='assets/worklist.ico';"
               />
               <figcaption>
-                Visão rápida: acompanhe estudos, participantes e pendências em
-                um único painel.
+                Visão rápida: acompanhe estudos, participantes e pendências em um único painel.
               </figcaption>
             </figure>
           </div>
@@ -832,9 +881,7 @@
                 loading="lazy"
                 onerror="this.onerror=null; this.src='assets/participante.png';"
               />
-              <figcaption>
-                Exemplo de interface do participante (imagem ilustrativa).
-              </figcaption>
+              <figcaption>Exemplo de interface do participante (imagem ilustrativa).</figcaption>
             </figure>
           </div>
         </div>
@@ -931,8 +978,7 @@
         </p>
 
         <div class="security-wrap">
-          <div class="panel security-img" aria-label="Segurança e conformidade">
-          </div>
+          <div class="panel security-img" aria-label="Segurança e conformidade"></div>
 
           <div class="panel">
             <div class="list">
@@ -968,6 +1014,7 @@
                   </p>
                 </div>
               </div>
+
             </div>
           </div>
         </div>
@@ -1085,97 +1132,44 @@
             <h3 style="margin: 0 0 12px">Envie uma mensagem</h3>
 
             <form action="https://api.web3forms.com/submit" method="POST">
-              <input
-                type="hidden"
-                name="access_key"
-                value="58f66871-880e-4ded-9111-8209940646e5"
-              />
-              <input
-                type="hidden"
-                name="subject"
-                value="Novo contato - Healthuture Solutions"
-              />
-              <input
-                type="hidden"
-                name="from_name"
-                value="Healthuture Solutions - Site"
-              />
-              <input
-                type="hidden"
-                name="redirect"
-                value="https://www.healthuturesolutions.com.br/obrigado.html"
-              />
+              <input type="hidden" name="access_key" value="58f66871-880e-4ded-9111-8209940646e5" />
+              <input type="hidden" name="subject" value="Novo contato - Healthuture Solutions" />
+              <input type="hidden" name="from_name" value="Healthuture Solutions - Site" />
+              <input type="hidden" name="redirect" value="https://www.healthuturesolutions.com.br/obrigado.html" />
               <input type="checkbox" name="botcheck" style="display: none" />
 
               <div>
                 <label for="nome">Nome completo *</label>
-                <input
-                  id="nome"
-                  name="nome"
-                  type="text"
-                  placeholder="Seu nome"
-                  autocomplete="name"
-                  required
-                />
+                <input id="nome" name="nome" type="text" placeholder="Seu nome" autocomplete="name" required />
               </div>
 
               <div>
                 <label for="email">Email *</label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  placeholder="seu@email.com"
-                  autocomplete="email"
-                  required
-                />
+                <input id="email" name="email" type="email" placeholder="seu@email.com" autocomplete="email" required />
               </div>
 
               <div>
                 <label for="telefone">Telefone</label>
-                <input
-                  id="telefone"
-                  name="telefone"
-                  type="tel"
-                  placeholder="(11) 9XXXX-XXXX"
-                  autocomplete="tel"
-                />
+                <input id="telefone" name="telefone" type="tel" placeholder="(11) 9XXXX-XXXX" autocomplete="tel" />
               </div>
 
               <div>
                 <label for="empresa">Instituição/Empresa</label>
-                <input
-                  id="empresa"
-                  name="empresa"
-                  type="text"
-                  placeholder="Nome da instituição"
-                  autocomplete="organization"
-                />
+                <input id="empresa" name="empresa" type="text" placeholder="Nome da instituição" autocomplete="organization" />
               </div>
 
               <div>
                 <label for="mensagem">Mensagem *</label>
-                <textarea
-                  id="mensagem"
-                  name="mensagem"
-                  placeholder="Como podemos ajudar você?"
-                  required
-                ></textarea>
+                <textarea id="mensagem" name="mensagem" placeholder="Como podemos ajudar você?" required></textarea>
               </div>
 
-              <button class="btn btn-primary" type="submit" style="width: 100%">
-                Enviar mensagem
-              </button>
+              <button class="btn btn-primary" type="submit" style="width: 100%">Enviar mensagem</button>
 
               <p style="margin: 8px 0 0; color: var(--muted2); font-size: 12.5px">
                 Ao enviar, você concorda com nossa
-                <a
-                  href="politica-de-privacidade.html"
-                  target="_blank"
-                  rel="noopener"
-                  style="text-decoration: underline"
-                  >Política de Privacidade</a
-                >.
+                <a href="politica-de-privacidade.html" target="_blank" rel="noopener" style="text-decoration: underline">
+                  Política de Privacidade
+                </a>.
               </p>
             </form>
           </div>
@@ -1212,61 +1206,52 @@
 
         <div class="footer-col">
           <h6>Contato</h6>
-          <a href="mailto:contato@healthuturesolutions.com.br"
-            >contato@healthuturesolutions.com.br</a
-          >
+          <a href="mailto:contato@healthuturesolutions.com.br">contato@healthuturesolutions.com.br</a>
           <a href="#">São Paulo - SP | Brasil</a>
         </div>
 
         <div class="footer-col">
           <h6>Legal</h6>
-          <a href="politica-de-privacidade.html" target="_blank" rel="noopener"
-            >Política de Privacidade</a
-          >
-          <a href="termos-de-uso.html" target="_blank" rel="noopener"
-            >Termos de Uso</a
-          >
+          <a href="politica-de-privacidade.html" target="_blank" rel="noopener">Política de Privacidade</a>
+          <a href="termos-de-uso.html" target="_blank" rel="noopener">Termos de Uso</a>
         </div>
       </div>
 
       <div class="copyright">© 2026 Healthuture Solutions. Todos os direitos reservados.</div>
 
-	<div style="border-top: 1px solid rgba(255,255,255,0.12); padding: 24px 18px; text-align:center;">
-  
-  <h6 style="
-    margin:0 0 14px; 
-    font-size:13px; 
-    letter-spacing:0.1em; 
-    text-transform:uppercase; 
-    color:rgba(255,255,255,0.7);">
-    Siga-nos nas redes sociais
-  </h6>
+      <div style="border-top: 1px solid rgba(255,255,255,0.12); padding: 24px 18px; text-align:center;">
+        <h6 style="
+          margin:0 0 14px;
+          font-size:13px;
+          letter-spacing:0.1em;
+          text-transform:uppercase;
+          color:rgba(255,255,255,0.7);">
+          Siga-nos nas redes sociais
+        </h6>
 
-  <a 
-    href="https://www.linkedin.com/company/healthuture-solutions/" 
-    target="_blank" 
-    rel="noopener"
-    aria-label="LinkedIn Healthuture Solutions"
-    style="
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      width:48px;
-      height:48px;
-      border-radius:50%;
-      background:#0A66C2;
-      transition:0.2s ease;
-    "
-    onmouseover="this.style.transform='scale(1.08)'"
-    onmouseout="this.style.transform='scale(1)'"
-  >
-    <!-- Ícone oficial LinkedIn -->
-    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="white" viewBox="0 0 24 24">
-      <path d="M20.447 20.452H17.21v-5.569c0-1.327-.025-3.036-1.85-3.036-1.853 0-2.136 1.445-2.136 2.939v5.666H9.988V9h3.112v1.561h.044c.434-.82 1.494-1.683 3.073-1.683 3.287 0 3.893 2.164 3.893 4.977v6.597zM5.337 7.433a1.812 1.812 0 1 1 0-3.625 1.812 1.812 0 0 1 0 3.625zM6.956 20.452H3.717V9h3.239v11.452zM22.225 0H1.771C.792 0 0 .771 0 1.723v20.554C0 23.229.792 24 1.771 24h20.451C23.2 24 24 23.229 24 22.277V1.723C24 .771 23.2 0 22.222 0h.003z"/>
-    </svg>
-  </a>
-
-</div>
+        <a
+          href="https://www.linkedin.com/company/healthuture-solutions/"
+          target="_blank"
+          rel="noopener"
+          aria-label="LinkedIn Healthuture Solutions"
+          style="
+            display:inline-flex;
+            align-items:center;
+            justify-content:center;
+            width:48px;
+            height:48px;
+            border-radius:50%;
+            background:#0A66C2;
+            transition:0.2s ease;
+          "
+          onmouseover="this.style.transform='scale(1.08)'"
+          onmouseout="this.style.transform='scale(1)'"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="white" viewBox="0 0 24 24">
+            <path d="M20.447 20.452H17.21v-5.569c0-1.327-.025-3.036-1.85-3.036-1.853 0-2.136 1.445-2.136 2.939v5.666H9.988V9h3.112v1.561h.044c.434-.82 1.494-1.683 3.073-1.683 3.287 0 3.893 2.164 3.893 4.977v6.597zM5.337 7.433a1.812 1.812 0 1 1 0-3.625 1.812 1.812 0 0 1 0 3.625zM6.956 20.452H3.717V9h3.239v11.452zM22.225 0H1.771C.792 0 0 .771 0 1.723v20.554C0 23.229.792 24 1.771 24h20.451C23.2 24 24 23.229 24 22.277V1.723C24 .771 23.2 0 22.222 0h.003z"/>
+          </svg>
+        </a>
+      </div>
     </footer>
 
     <script>
@@ -1280,14 +1265,16 @@
         hamb.textContent = open ? "Fechar" : "Menu";
       }
 
-      hamb?.addEventListener("click", () => setMenuOpen(menu.hidden));
+      function toggleMenu() {
+        setMenuOpen(menu.hidden);
+      }
 
-      // Close mobile menu when clicking an anchor
+      hamb?.addEventListener("click", toggleMenu);
+
       menu?.querySelectorAll("a").forEach((a) => {
         a.addEventListener("click", () => setMenuOpen(false));
       });
 
-      // Close on ESC
       document.addEventListener("keydown", (e) => {
         if (e.key === "Escape") setMenuOpen(false);
       });
