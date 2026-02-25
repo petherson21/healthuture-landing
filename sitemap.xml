@@ -47,4 +47,18 @@
   <priority>0.8</priority>
   </url>
 
+  <url>
+  <loc>https://healthuturesolutions.com.br/auditoria-pesquisa-clinica.html</loc>
+  <lastmod>2026-02-25</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+</url>
+
+<url>
+  <loc>https://healthuturesolutions.com.br/registro-eventos-adversos.html</loc>
+  <lastmod>2026-02-25</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+</url>
+
 </urlset>
