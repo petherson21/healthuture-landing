@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Software para Gestão de Estudos Clínicos | Healthuture Solutions</title>
+    <meta
+      name="description"
+      content="Software para gestão de estudos clínicos em hospitais e centros de pesquisa. Auditoria, rastreabilidade, questionários, termos de consentimento, registro de sintomas e relatórios."
+    />
+    <link rel="canonical" href="https://healthuturesolutions.com.br/software-gestao-estudos-clinicos.html" />
+    <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
+    <meta name="theme-color" content="#2165aa" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Healthuture Solutions" />
+    <meta property="og:title" content="Software para Gestão de Estudos Clínicos | Healthuture Solutions" />
+    <meta
+      property="og:description"
+      content="Gestão de estudos clínicos com auditoria, questionários, termos, registro de sintomas/eventos adversos e relatórios com segurança e rastreabilidade."
+    />
+    <meta property="og:url" content="https://healthuturesolutions.com.br/software-gestao-estudos-clinicos.html" />
+    <meta property="og:image" content="https://healthuturesolutions.com.br/assets/logo.png" />
+
+    <!-- Favicons -->
+    <link rel="icon" href="assets/favicon.ico" />
+    <link rel="apple-touch-icon" href="assets/favicon.ico" />
+
+    <!-- Schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Healthuture Solutions",
+        "operatingSystem": "Web",
+        "applicationCategory": "MedicalBusinessApplication",
+        "url": "https://healthuturesolutions.com.br/software-gestao-estudos-clinicos.html",
+        "description": "Software para gestão de estudos clínicos com auditoria, rastreabilidade, questionários, termos de consentimento, registro de sintomas/eventos adversos e relatórios."
+      }
+    </script>
+
+    <style>
+      :root {
+        --primary: #2165aa;
+        --primary2: #105282;
+        --accent: #0891b2;
+        --text: #0f172a;
+        --muted: #475569;
+        --muted2: #64748b;
+        --bg: #f6f8fb;
+        --card: #ffffff;
+        --border: #e2e8f0;
+        --shadow: 0 18px 45px rgba(2, 8, 23, 0.08);
+        --radius: 18px;
+        --max: 980px;
+      }
+
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+        color: var(--text);
+        background: var(--bg);
+      }
+      a { color: inherit; text-decoration: none; }
+      img { max-width: 100%; display: block; }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: rgba(255,255,255,.9);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(226,232,240,.8);
+      }
+      .topbar-inner {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 10px 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .brand img { width: 48px; height: 48px; object-fit: contain; }
+      .brand strong { color: var(--primary); font-weight: 900; letter-spacing: .2px; }
+
+      .nav { display: flex; gap: 10px; align-items: center; }
+      .nav a {
+        font-size: 14px;
+        padding: 8px 10px;
+        border-radius: 12px;
+        color: rgba(15, 23, 42, .9);
+      }
+      .nav a:hover { background: #f1f5f9; }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 16px;
+        border-radius: 14px;
+        font-weight: 800;
+        font-size: 14px;
+        border: 1px solid transparent;
+        cursor: pointer;
+        transition: .15s ease;
+        white-space: nowrap;
+      }
+      .btn-primary { background: var(--primary); color: #fff; box-shadow: 0 12px 28px rgba(33,101,170,.18); }
+      .btn-primary:hover { background: var(--primary2); }
+      .btn-outline { background: #fff; border-color: var(--border); }
+      .btn-outline:hover { box-shadow: 0 12px 24px rgba(2,8,23,.06); }
+
+      header.hero {
+        background:
+          radial-gradient(900px 500px at 15% 20%, rgba(8,145,178,.35), transparent 60%),
+          radial-gradient(900px 500px at 85% 25%, rgba(33,101,170,.55), transparent 55%),
+          linear-gradient(120deg, #061a2c 0%, #0b3951 35%, #0d4f6b 70%, #073b4a 100%);
+        color: #fff;
+      }
+      .hero-inner {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 56px 16px 44px;
+        text-align: left;
+      }
+      .breadcrumb {
+        font-size: 13px;
+        opacity: .9;
+        margin-bottom: 10px;
+      }
+      .hero h1 {
+        margin: 0 0 10px;
+        font-size: clamp(30px, 4.2vw, 46px);
+        line-height: 1.1;
+        letter-spacing: -0.4px;
+      }
+      .hero p {
+        margin: 0 0 18px;
+        max-width: 780px;
+        font-size: 16px;
+        opacity: .95;
+        line-height: 1.6;
+      }
+      .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+
+      main {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 28px 16px 64px;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin-top: 18px;
+      }
+      @media (max-width: 860px) {
+        .grid { grid-template-columns: 1fr; }
+        .nav { display: none; }
+      }
+
+      .card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 18px;
+      }
+      .card h2 {
+        margin: 0 0 8px;
+        font-size: 18px;
+        letter-spacing: -0.2px;
+      }
+      .card p { margin: 0; color: var(--muted); line-height: 1.7; }
+
+      .list { margin: 12px 0 0; padding-left: 18px; color: var(--muted); line-height: 1.75; }
+      .kpis {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        margin-top: 18px;
+      }
+      @media (max-width: 860px) { .kpis { grid-template-columns: 1fr; } }
+      .kpi {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 14px;
+      }
+      .kpi b { display: block; font-size: 14px; }
+      .kpi span { color: var(--muted2); font-size: 13px; line-height: 1.5; display: block; margin-top: 4px; }
+
+      .cta {
+        margin-top: 22px;
+        background: linear-gradient(120deg, rgba(8,145,178,.14), rgba(33,101,170,.10));
+        border: 1px solid rgba(8,145,178,.18);
+        border-radius: 22px;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+      @media (max-width: 860px) { .cta { flex-direction: column; text-align: center; } }
+      .cta h3 { margin: 0 0 6px; font-size: 18px; }
+      .cta p { margin: 0; color: var(--muted); }
+
+      footer {
+        border-top: 1px solid var(--border);
+        background: #fff;
+      }
+      .footer-inner {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 18px 16px;
+        color: var(--muted2);
+        font-size: 13px;
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .footer-inner a { text-decoration: underline; }
+    </style>
+  </head>
+
+  <body>
+    <div class="topbar">
+      <div class="topbar-inner">
+        <a class="brand" href="https://healthuturesolutions.com.br/" aria-label="Voltar para a página inicial">
+          <img src="assets/logo.png" alt="Logo Healthuture Solutions" onerror="this.onerror=null; this.src='assets/logo.svg';" />
+          <strong>Healthuture Solutions</strong>
+        </a>
+
+        <nav class="nav" aria-label="Navegação">
+          <a href="https://healthuturesolutions.com.br/#funcionalidades">Funcionalidades</a>
+          <a href="https://healthuturesolutions.com.br/#seguranca">Segurança</a>
+          <a href="https://healthuturesolutions.com.br/#contato" class="btn btn-primary">Solicitar demonstração</a>
+        </nav>
+
+        <a class="btn btn-outline" href="https://healthuturesolutions.com.br/#contato">Contato</a>
+      </div>
+    </div>
+
+    <header class="hero">
+      <div class="hero-inner">
+        <div class="breadcrumb">
+          <a href="https://healthuturesolutions.com.br/" style="text-decoration: underline; color: rgba(255,255,255,.92);">Início</a>
+          <span> / </span>
+          <span>Software para gestão de estudos clínicos</span>
+        </div>
+
+        <h1>Software para Gestão de Estudos Clínicos</h1>
+        <p>
+          A Healthuture Solutions ajuda hospitais, clínicas e centros de pesquisa a centralizar informações do estudo,
+          organizar participantes e garantir <b>auditoria</b>, <b>rastreabilidade</b> e <b>conformidade</b> (LGPD) de ponta a ponta.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://healthuturesolutions.com.br/#contato">Solicitar demonstração</a>
+          <a class="btn btn-outline" href="https://healthuturesolutions.com.br/#funcionalidades">Ver funcionalidades</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="grid">
+        <section class="card">
+          <h2>O que você consegue fazer com a plataforma</h2>
+          <p>
+            Um ambiente único para gerenciar o estudo, acompanhar participantes e padronizar a coleta de dados.
+          </p>
+          <ul class="list">
+            <li>Gestão de estudos clínicos (cadastro, organização e acompanhamento)</li>
+            <li>Cadastro e acompanhamento de participantes</li>
+            <li>Gestão de termos e documentos (upload + controle de aceite)</li>
+            <li>Aplicação de questionários e avaliações personalizadas</li>
+            <li>Registro de sintomas e eventos adversos</li>
+            <li>Relatórios e rastreabilidade (auditoria)</li>
+          </ul>
+        </section>
+
+        <section class="card">
+          <h2>Segurança, privacidade e conformidade</h2>
+          <p>
+            Construído com foco em proteção de dados sensíveis e boas práticas para operações em saúde.
+          </p>
+          <ul class="list">
+            <li>Controle de acesso por perfil (permissões granulares)</li>
+            <li>Registro de atividades (auditoria) para transparência e controle</li>
+            <li>Estrutura preparada para LGPD</li>
+            <li>Operação web com acesso seguro para equipe e participante</li>
+          </ul>
+        </section>
+      </div>
+
+      <div class="kpis" aria-label="Benefícios">
+        <div class="kpi">
+          <b>Menos retrabalho</b>
+          <span>Centralize dados e reduza planilhas, e-mails e controles paralelos.</span>
+        </div>
+        <div class="kpi">
+          <b>Mais rastreabilidade</b>
+          <span>Auditoria de ações e histórico do estudo em um único lugar.</span>
+        </div>
+        <div class="kpi">
+          <b>Melhor adesão</b>
+          <span>Fluxo simples para o participante: termos, questionários e registros.</span>
+        </div>
+      </div>
+
+      <div class="cta">
+        <div>
+          <h3>Quer ver a plataforma na prática?</h3>
+          <p>Agende uma demonstração e veja como a Healthuture otimiza a gestão de estudos clínicos.</p>
+        </div>
+        <a class="btn btn-primary" href="https://healthuturesolutions.com.br/#contato">Agendar demonstração</a>
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        <span>© 2026 Healthuture Solutions</span>
+        <span>
+          <a href="politica-de-privacidade.html" target="_blank" rel="noopener">Política de Privacidade</a>
+          •
+          <a href="termos-de-uso.html" target="_blank" rel="noopener">Termos de Uso</a>
+        </span>
+      </div>
+    </footer>
+  </body>
+</html>
