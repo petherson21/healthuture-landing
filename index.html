@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- SEO -->
-    <title>Software para Gestão de Estudos Clínicos e Pesquisa Clínica | Healthuture Solutions</title>
+    <title>Plataforma Completa para Gestão de Estudos Clínicos | Healthuture Solutions</title>
     <meta
       name="description"
-      content="Software para gestão de estudos clínicos em hospitais e centros de pesquisa. Controle de participantes, termos, questionários, sintomas, eventos adversos e auditoria com segurança e conformidade com a LGPD."
+      content="Plataforma completa para gestão de estudos clínicos em hospitais e centros de pesquisa. Gestão clínica à vista, cronograma de visitas, cobrança por regras, gestão financeira, timeline do participante, auditoria e conformidade com a LGPD."
     />
     <link rel="canonical" href="https://healthuturesolutions.com.br/" />
 
@@ -22,10 +22,10 @@
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Healthuture Solutions" />
-    <meta property="og:title" content="Plataforma de Gestão de Estudos Clínicos | Healthuture Solutions" />
+    <meta property="og:title" content="Plataforma Completa para Gestão de Estudos Clínicos | Healthuture Solutions" />
     <meta
       property="og:description"
-      content="Software especializado em gestão de estudos clínicos para hospitais e centros de pesquisa. Auditoria, questionários, registro de sintomas e relatórios com segurança e rastreabilidade."
+      content="Plataforma completa para pesquisa clínica com gestão clínica à vista, cronograma de visitas, cobrança por regras, gestão financeira, timeline do participante, auditoria e rastreabilidade."
     />
     <meta property="og:url" content="https://healthuturesolutions.com.br/" />
     <meta property="og:image" content="https://healthuturesolutions.com.br/assets/logo.png" />
@@ -33,10 +33,10 @@
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Plataforma de Gestão de Estudos Clínicos | Healthuture Solutions" />
+    <meta name="twitter:title" content="Plataforma Completa para Gestão de Estudos Clínicos | Healthuture Solutions" />
     <meta
       name="twitter:description"
-      content="Gestão de estudos clínicos com auditoria, questionários, registro de sintomas/eventos adversos e conformidade LGPD."
+      content="Gestão de estudos clínicos com visão clínica à vista, cronograma de visitas, financeiro integrado, timeline do participante e conformidade LGPD."
     />
     <meta name="twitter:image" content="https://healthuturesolutions.com.br/assets/logo.png" />
 
@@ -67,7 +67,7 @@
             "name": "Healthuture Solutions",
             "operatingSystem": "Web",
             "applicationCategory": "MedicalBusinessApplication",
-            "description": "Software especializado em gestão de estudos clínicos para hospitais e centros de pesquisa, com auditoria, questionários, registro de sintomas/eventos adversos e relatórios.",
+            "description": "Plataforma completa para gestão de estudos clínicos com gestão clínica à vista, cronograma de visitas, cobrança por regras, gestão financeira, timeline do participante, auditoria e relatórios.",
             "url": "https://healthuturesolutions.com.br/",
             "publisher": { "@id": "https://healthuturesolutions.com.br/#org" }
           }
@@ -77,653 +77,327 @@
 
     <style>
       :root {
-        /* Brand */
-        --primary: #2165aa;
-        --primary2: #105282;
-        --accent: #0891b2;
-        --accent2: #025761;
-        --ring: rgba(33, 101, 170, 0.25);
+        --primary: #2563eb;
+        --primary2: #1d4ed8;
+        --accent: #06b6d4;
+        --accent2: #0f766e;
+        --ring: rgba(37, 99, 235, 0.22);
 
-        --text: #0f172a;
-        --muted: #475569;
+        --text: #e2e8f0;
+        --muted: #94a3b8;
         --muted2: #64748b;
 
-        --bg: #f6f8fb;
-        --card: #ffffff;
-        --border: #e2e8f0;
-        --shadow: 0 18px 45px rgba(2, 8, 23, 0.1);
+        --bg: #020817;
+        --bg-soft: #0b1223;
+        --bg-elev: #0f172a;
+        --card: rgba(15, 23, 42, 0.78);
+        --card-strong: rgba(12, 19, 35, 0.96);
+        --border: rgba(148, 163, 184, 0.15);
+        --border-strong: rgba(96, 165, 250, 0.2);
+        --shadow: 0 20px 60px rgba(2, 8, 23, 0.45);
 
-        --radius: 16px;
-        --radius2: 22px;
-        --max: 1120px;
+        --radius: 18px;
+        --radius2: 26px;
+        --max: 1180px;
       }
 
-      * {
-        box-sizing: border-box;
-      }
-      html {
-        scroll-behavior: smooth;
-      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
       body {
         margin: 0;
-        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
-          Helvetica, Arial;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
         color: var(--text);
-        background: var(--bg);
+        background:
+          radial-gradient(circle at top left, rgba(6, 182, 212, 0.09), transparent 26%),
+          radial-gradient(circle at 85% 10%, rgba(37, 99, 235, 0.14), transparent 30%),
+          linear-gradient(180deg, #020617 0%, #08111f 36%, #020817 100%);
       }
-      a {
-        color: inherit;
-        text-decoration: none;
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background-image:
+          linear-gradient(rgba(148,163,184,0.045) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(148,163,184,0.045) 1px, transparent 1px);
+        background-size: 40px 40px;
+        mask-image: radial-gradient(circle at center, black, transparent 88%);
+        opacity: 0.32;
       }
-      img {
-        max-width: 100%;
-        display: block;
-      }
+      a { color: inherit; text-decoration: none; }
+      img { max-width: 100%; display: block; }
 
-      /* A11y */
       .skip {
-        position: absolute;
-        left: -9999px;
-        top: 8px;
-        background: #fff;
-        color: #111;
-        border: 1px solid var(--border);
-        border-radius: 12px;
-        padding: 10px 12px;
-        z-index: 100;
+        position: absolute; left: -9999px; top: 8px;
+        background: #fff; color: #111; border: 1px solid var(--border);
+        border-radius: 12px; padding: 10px 12px; z-index: 100;
       }
-      .skip:focus {
-        left: 10px;
-      }
+      .skip:focus { left: 10px; }
       :focus-visible {
-        outline: 3px solid rgba(8, 145, 178, 0.45);
-        outline-offset: 3px;
-        border-radius: 10px;
+        outline: 3px solid rgba(34, 211, 238, 0.45);
+        outline-offset: 3px; border-radius: 10px;
       }
       @media (prefers-reduced-motion: reduce) {
-        html {
-          scroll-behavior: auto;
-        }
-        * {
-          transition: none !important;
-          animation: none !important;
-        }
+        html { scroll-behavior: auto; }
+        * { transition: none !important; animation: none !important; }
       }
 
-      /* ===== Topbar ===== */
       .topbar {
-        position: sticky;
-        top: 0;
-        z-index: 50;
-        background: rgba(255, 255, 255, 0.88);
-        backdrop-filter: blur(10px);
-        border-bottom: 1px solid rgba(226, 232, 240, 0.7);
+        position: sticky; top: 0; z-index: 50;
+        background: rgba(2, 8, 23, 0.72);
+        backdrop-filter: blur(16px);
+        border-bottom: 1px solid rgba(148, 163, 184, 0.12);
       }
-
       .topbar-inner {
-        max-width: var(--max);
-        margin: 0 auto;
-        padding: 8px 18px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 16px;
-        height: 72px;
+        max-width: var(--max); margin: 0 auto; padding: 10px 18px;
+        display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 78px;
       }
-      .brand {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        min-width: 220px;
-      }
-      .brand img {
-        width: 110px;
-        height: 100px;
-        object-fit: contain;
-        flex-shrink: 0;
-      }
-      .brand strong {
-        color: var(--primary);
-        letter-spacing: 0.2px;
-        font-weight: 800;
-      }
+      .brand { display: flex; align-items: center; gap: 12px; min-width: 220px; }
+      .brand img { width: 112px; height: 96px; object-fit: contain; flex-shrink: 0; filter: drop-shadow(0 8px 22px rgba(37,99,235,.18)); }
+      .brand strong { color: #f8fafc; letter-spacing: .2px; font-weight: 800; }
 
-      .nav {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-      }
+      .nav { display: flex; align-items: center; gap: 8px; }
       .nav a {
-        font-size: 14px;
-        color: #0f172a;
-        opacity: 0.88;
-        padding: 8px 10px;
-        border-radius: 10px;
+        font-size: 14px; color: #cbd5e1; opacity: .94; padding: 10px 12px;
+        border-radius: 12px; border: 1px solid transparent;
       }
       .nav a:hover {
-        background: #f1f5f9;
-        opacity: 1;
+        background: rgba(255,255,255,.04); border-color: rgba(148,163,184,.12); color: #fff;
       }
 
       .btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        padding: 12px 16px;
-        border-radius: 12px;
-        font-weight: 700;
-        font-size: 14px;
-        border: 1px solid transparent;
-        cursor: pointer;
-        transition: transform 0.06s ease, box-shadow 0.15s ease,
-          background 0.15s ease, border-color 0.15s ease;
-        user-select: none;
-        white-space: nowrap;
+        display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+        padding: 13px 18px; border-radius: 14px; font-weight: 700; font-size: 14px;
+        border: 1px solid transparent; cursor: pointer;
+        transition: transform .12s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease, color .18s ease;
+        user-select: none; white-space: nowrap;
       }
-      .btn:active {
-        transform: translateY(1px);
-      }
+      .btn:active { transform: translateY(1px); }
       .btn-primary {
-        background: var(--primary);
-        color: #fff;
-        box-shadow: 0 12px 30px rgba(33, 101, 170, 0.22);
+        background: linear-gradient(135deg, var(--primary) 0%, #3b82f6 45%, var(--accent) 100%);
+        color: #fff; box-shadow: 0 16px 40px rgba(37, 99, 235, 0.30);
       }
-      .btn-primary:hover {
-        background: var(--primary2);
-      }
+      .btn-primary:hover { box-shadow: 0 20px 50px rgba(37,99,235,.36); transform: translateY(-1px); }
       .btn-outline {
-        background: #fff;
-        border-color: var(--border);
-        color: #0f172a;
+        background: rgba(255,255,255,.03); border-color: rgba(148,163,184,.16); color: #e2e8f0;
       }
       .btn-outline:hover {
-        border-color: #cbd5e1;
-        box-shadow: 0 10px 24px rgba(2, 8, 23, 0.08);
+        border-color: rgba(96,165,250,.25); box-shadow: 0 12px 28px rgba(2, 8, 23, 0.22); background: rgba(255,255,255,.06);
       }
 
-      /* Mobile nav */
-      .hamb {
-        display: none;
-      }
+      .hamb { display: none; }
       @media (max-width: 860px) {
-        .nav {
-          display: none;
-        }
-        .hamb {
-          display: inline-flex;
-        }
-        .brand {
-          min-width: auto;
-        }
+        .nav { display: none; }
+        .hamb { display: inline-flex; }
+        .brand { min-width: auto; }
       }
-      @media (max-width: 768px) {
-        .brand strong {
-          display: none;
-        }
-      }
+      @media (max-width: 768px) { .brand strong { display: none; } }
       .mobile-menu {
-        padding: 8px 18px 16px;
-        border-top: 1px solid rgba(226, 232, 240, 0.7);
+        padding: 8px 18px 16px; border-top: 1px solid rgba(148,163,184,.12); background: rgba(2,8,23,.92);
       }
-      .mobile-menu[hidden] {
-        display: none;
-      }
-      .mobile-menu a {
-        display: block;
-        padding: 10px 10px;
-        border-radius: 10px;
-        color: #0f172a;
-        opacity: 0.9;
-      }
-      .mobile-menu a:hover {
-        background: #f1f5f9;
-      }
-      .mobile-menu .cta {
-        margin-top: 10px;
-      }
+      .mobile-menu[hidden] { display: none; }
+      .mobile-menu a { display: block; padding: 12px 10px; border-radius: 10px; color: #cbd5e1; opacity: .95; }
+      .mobile-menu a:hover { background: rgba(255,255,255,.04); color: #fff; }
+      .mobile-menu .cta { margin-top: 10px; }
 
-      /* ===== Hero ===== */
       .hero {
-        background: radial-gradient(1200px 600px at 12% 15%, rgba(8, 145, 178, 0.4), transparent 60%),
-          radial-gradient(900px 500px at 86% 20%, rgba(33, 101, 170, 0.55), transparent 55%),
-          linear-gradient(120deg, #061a2c 0%, #0b3951 35%, #0d4f6b 70%, #073b4a 100%);
-        color: #fff;
-        position: relative;
-        overflow: hidden;
+        background:
+          radial-gradient(900px 420px at 15% 0%, rgba(6,182,212,.18), transparent 65%),
+          radial-gradient(900px 480px at 88% 8%, rgba(59,130,246,.22), transparent 60%),
+          linear-gradient(180deg, #04101f 0%, #071426 35%, #020817 100%);
+        color: #fff; position: relative; overflow: hidden;
       }
       .hero::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: radial-gradient(circle at 10% 90%, rgba(255, 255, 255, 0.08) 0 2px, transparent 2px) 0 0/28px 28px,
-          radial-gradient(circle at 90% 20%, rgba(255, 255, 255, 0.08) 0 2px, transparent 2px) 0 0/28px 28px;
-        opacity: 0.6;
+        content: ""; position: absolute; inset: 0;
+        background: linear-gradient(120deg, rgba(255,255,255,.04) 0%, transparent 30%, rgba(255,255,255,.02) 50%, transparent 70%);
         pointer-events: none;
       }
+      .hero::after {
+        content: ""; position: absolute; inset: auto 0 0 0; height: 140px;
+        background: linear-gradient(180deg, transparent, rgba(2,8,23,.95));
+      }
       .hero-inner {
-        max-width: var(--max);
-        margin: 0 auto;
-        padding: clamp(64px, 8vw, 92px) 18px 64px;
-        text-align: center;
-        position: relative;
+        max-width: var(--max); margin: 0 auto; padding: clamp(72px, 8vw, 110px) 18px 78px; text-align: center; position: relative; z-index: 1;
       }
       .hero h1 {
-        margin: 0 0 14px;
-        font-size: clamp(34px, 4.6vw, 56px);
-        line-height: 1.08;
-        letter-spacing: -0.5px;
+        margin: 0 auto 18px; max-width: 1020px;
+        font-size: clamp(38px, 5vw, 66px); line-height: 1.02; letter-spacing: -1.4px;
       }
       .hero p {
-        margin: 0 auto 14px;
-        max-width: 740px;
-        font-size: clamp(16px, 2vw, 20px);
-        opacity: 0.93;
+        margin: 0 auto 12px; max-width: 780px; font-size: clamp(16px, 2vw, 20px); color: rgba(226,232,240,.88);
       }
-      .hero .sub {
-        margin-top: 16px;
-        opacity: 0.86;
-        font-size: 16px;
-        max-width: 820px;
-      }
-      .hero-actions {
-        margin-top: 30px;
-        display: flex;
-        gap: 14px;
-        justify-content: center;
-        flex-wrap: wrap;
-      }
+      .hero .sub { margin-top: 16px; color: rgba(148,163,184,.95); font-size: 16px; max-width: 860px; }
+      .hero-actions { margin-top: 32px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
       .scroll-down {
-        margin-top: 34px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 42px;
-        height: 42px;
-        border-radius: 999px;
-        border: 1px solid rgba(255, 255, 255, 0.25);
-        background: rgba(255, 255, 255, 0.08);
-        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.2);
-        opacity: 0.92;
+        margin-top: 34px; display: inline-flex; align-items: center; justify-content: center; width: 46px; height: 46px;
+        border-radius: 999px; border: 1px solid rgba(148,163,184,.25); background: rgba(255,255,255,.05);
+        box-shadow: 0 18px 40px rgba(0,0,0,.22); opacity: .92;
       }
-      .scroll-down:hover {
-        opacity: 1;
-      }
+      .scroll-down:hover { opacity: 1; }
+      .hero-actions + .scroll-down { margin-bottom: 0; }
 
-      /* ===== Sections ===== */
       main section {
-        max-width: var(--max);
-        margin: 0 auto;
-        padding: 72px 18px;
-        content-visibility: auto;
-        contain-intrinsic-size: 800px;
+        max-width: var(--max); margin: 0 auto; padding: 82px 18px; content-visibility: auto; contain-intrinsic-size: 800px;
       }
       .pill {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        font-size: 12px;
-        font-weight: 800;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: var(--accent2);
-        background: rgba(8, 145, 178, 0.12);
-        border: 1px solid rgba(8, 145, 178, 0.2);
-        padding: 8px 12px;
-        border-radius: 999px;
+        display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 800; letter-spacing: .16em;
+        text-transform: uppercase; color: #67e8f9; background: rgba(6, 182, 212, 0.10);
+        border: 1px solid rgba(34, 211, 238, 0.16); padding: 9px 14px; border-radius: 999px;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,.05);
       }
       .section-title {
-        margin: 14px 0 12px;
-        font-size: clamp(28px, 3.2vw, 44px);
-        letter-spacing: -0.3px;
-        line-height: 1.08;
+        margin: 16px 0 12px; font-size: clamp(30px, 3.3vw, 48px); letter-spacing: -.8px; line-height: 1.04; color: #f8fafc;
       }
-      .section-desc {
-        color: var(--muted);
-        max-width: 840px;
-        margin: 0 auto;
-        font-size: 16px;
-        line-height: 1.7;
-      }
+      .section-desc { color: var(--muted); max-width: 840px; margin: 0 auto; font-size: 16px; line-height: 1.8; }
 
-      /* Two column */
       .grid-2 {
-        margin-top: 28px;
-        display: grid;
-        grid-template-columns: 1.15fr 0.85fr;
-        gap: 26px;
-        align-items: stretch;
+        margin-top: 30px; display: grid; grid-template-columns: 1.15fr .85fr; gap: 26px; align-items: stretch;
       }
-      @media (max-width: 920px) {
-        .grid-2 {
-          grid-template-columns: 1fr;
-        }
-      }
+      @media (max-width: 920px) { .grid-2 { grid-template-columns: 1fr; } }
 
       .panel {
-        background: var(--card);
-        border: 1px solid var(--border);
-        border-radius: var(--radius2);
-        box-shadow: var(--shadow);
-        overflow: hidden;
+        background: linear-gradient(180deg, rgba(15,23,42,.82), rgba(8,15,30,.88));
+        border: 1px solid var(--border); border-radius: var(--radius2);
+        box-shadow: var(--shadow); overflow: hidden; position: relative;
       }
-      .panel.pad {
-        padding: 26px;
+      .panel::before {
+        content: ""; position: absolute; inset: 0; pointer-events: none;
+        background: linear-gradient(180deg, rgba(255,255,255,.04), transparent 24%);
       }
-      .panel h3 {
-        margin: 0 0 10px;
-        font-size: 18px;
-        letter-spacing: -0.2px;
-      }
-      .panel p {
-        margin: 0 0 14px;
-        color: var(--muted);
-        line-height: 1.75;
-        font-size: 15px;
-      }
+      .panel.pad { padding: 28px; }
+      .panel h3 { margin: 0 0 12px; font-size: 20px; letter-spacing: -.3px; color: #f8fafc; }
+      .panel p { margin: 0 0 14px; color: var(--muted); line-height: 1.8; font-size: 15px; }
 
-      /* Screenshot */
       .shot {
-        margin: 0;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        background: linear-gradient(120deg, rgba(8, 145, 178, 0.12), rgba(33, 101, 170, 0.08));
+        margin: 0; height: 100%; display: flex; flex-direction: column;
+        background: linear-gradient(145deg, rgba(6,182,212,.08), rgba(37,99,235,.08));
       }
       .shot img {
-        width: 100%;
-        height: auto;
-        max-height: 560px;
-        object-fit: contain;
-        background: rgba(255, 255, 255, 0.7);
-        padding: 12px;
+        width: 100%; height: auto; max-height: 560px; object-fit: contain;
+        background: linear-gradient(180deg, rgba(15,23,42,.8), rgba(255,255,255,.02)); padding: 14px;
       }
       .shot figcaption {
-        padding: 14px 16px;
-        border-top: 1px solid rgba(226, 232, 240, 0.8);
-        font-size: 13px;
-        color: var(--muted2);
+        padding: 14px 16px; border-top: 1px solid rgba(148,163,184,.12); font-size: 13px; color: var(--muted);
       }
 
-      /* Cards grid */
       .cards {
-        margin-top: 34px;
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 18px;
+        margin-top: 36px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px;
       }
-      @media (max-width: 1040px) {
-        .cards {
-          grid-template-columns: repeat(2, 1fr);
-        }
-      }
-      @media (max-width: 560px) {
-        .cards {
-          grid-template-columns: 1fr;
-        }
-      }
-
-      .cards.cards-scroll {
-      }
+      @media (max-width: 1040px) { .cards { grid-template-columns: repeat(2, 1fr); } }
+      @media (max-width: 560px) { .cards { grid-template-columns: 1fr; } }
       @media (max-width: 700px) {
         .cards.cards-scroll {
-          grid-template-columns: none;
-          grid-auto-flow: column;
-          grid-auto-columns: minmax(260px, 82vw);
-          overflow-x: auto;
-          overflow-y: hidden;
-          -webkit-overflow-scrolling: touch;
-          scroll-snap-type: x mandatory;
-          overscroll-behavior-x: contain;
-          padding-bottom: 10px;
+          grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: minmax(260px, 82vw);
+          overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; scroll-snap-type: x mandatory;
+          overscroll-behavior-x: contain; padding-bottom: 10px;
         }
-        .cards.cards-scroll .card {
-          scroll-snap-align: start;
-        }
+        .cards.cards-scroll .card { scroll-snap-align: start; }
       }
 
       .card {
-        background: var(--card);
-        border: 1px solid var(--border);
-        border-radius: var(--radius2);
-        box-shadow: 0 18px 40px rgba(2, 8, 23, 0.06);
-        padding: 20px;
-        min-height: 190px;
-        transition: transform 0.12s ease, box-shadow 0.12s ease,
-          border-color 0.12s ease;
+        background: linear-gradient(180deg, rgba(15,23,42,.88), rgba(7,13,27,.92));
+        border: 1px solid rgba(148,163,184,.14); border-radius: 22px; box-shadow: 0 20px 42px rgba(2,8,23,.26);
+        padding: 22px; min-height: 200px; transition: transform .14s ease, box-shadow .14s ease, border-color .14s ease, background .14s ease;
+        position: relative; overflow: hidden;
+      }
+      .card::after {
+        content: ""; position: absolute; inset: auto -20% -40% auto; width: 120px; height: 120px;
+        background: radial-gradient(circle, rgba(59,130,246,.16), transparent 70%); pointer-events: none;
       }
       .card:hover {
-        transform: translateY(-2px);
-        border-color: #cbd5e1;
-        box-shadow: 0 24px 60px rgba(2, 8, 23, 0.1);
+        transform: translateY(-4px); border-color: rgba(96,165,250,.28); box-shadow: 0 26px 56px rgba(2,8,23,.34);
       }
       .icon {
-        width: 20px;
-        height: 20px;
-        border-radius: 14px;
-        background: rgba(8, 145, 178, 0.14);
-        border: 1px solid rgba(8, 145, 178, 0.22);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 14px;
+        width: 44px; height: 44px; border-radius: 14px; background: linear-gradient(135deg, rgba(37,99,235,.20), rgba(6,182,212,.18));
+        border: 1px solid rgba(96,165,250,.20); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; font-size: 19px;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,.05);
       }
-      .card h4 {
-        margin: 0 0 8px;
-        font-size: 16px;
-        letter-spacing: -0.2px;
-      }
-      .card p {
-        margin: 0;
-        color: var(--muted2);
-        line-height: 1.65;
-        font-size: 14px;
-      }
+      .card h4 { margin: 0 0 8px; font-size: 17px; letter-spacing: -.25px; color: #f8fafc; }
+      .card p { margin: 0; color: var(--muted); line-height: 1.72; font-size: 14px; }
 
-      /* Security layout */
-      .security-wrap {
-        margin-top: 28px;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 24px;
-        align-items: stretch;
-      }
-      @media (max-width: 920px) {
-        .security-wrap {
-          grid-template-columns: 1fr;
-        }
-      }
+      .security-wrap { margin-top: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: stretch; }
+      @media (max-width: 920px) { .security-wrap { grid-template-columns: 1fr; } }
       .security-img {
         min-height: 320px;
-        background: linear-gradient(120deg, rgba(8, 145, 178, 0.18), rgba(33, 101, 170, 0.12)),
+        background:
+          linear-gradient(135deg, rgba(6,182,212,.20), rgba(37,99,235,.14)),
           url("assets/security.jpg") center/cover no-repeat,
           url("assets/security.svg") center/cover no-repeat;
       }
 
-      .list {
-        display: flex;
-        flex-direction: column;
-        gap: 14px;
-        padding: 22px;
-      }
+      .list { display: flex; flex-direction: column; gap: 14px; padding: 22px; }
       .list-item {
-        display: flex;
-        gap: 12px;
-        align-items: flex-start;
-        padding: 14px;
-        border-radius: 16px;
-        border: 1px solid var(--border);
-        background: #fff;
+        display: flex; gap: 12px; align-items: flex-start; padding: 16px; border-radius: 18px;
+        border: 1px solid rgba(148,163,184,.12); background: rgba(255,255,255,.02);
       }
       .dot {
-        width: 34px;
-        height: 34px;
-        border-radius: 12px;
-        background: rgba(33, 101, 170, 0.12);
-        border: 1px solid rgba(33, 101, 170, 0.2);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex: 0 0 auto;
-        margin-top: 2px;
+        width: 36px; height: 36px; border-radius: 12px; background: rgba(37,99,235,.15);
+        border: 1px solid rgba(96,165,250,.18); display: flex; align-items: center; justify-content: center; flex: 0 0 auto; margin-top: 2px;
       }
-      .list-item h5 {
-        margin: 0 0 4px;
-        font-size: 14.5px;
-        letter-spacing: -0.2px;
-      }
-      .list-item p {
-        margin: 0;
-        color: var(--muted2);
-        font-size: 13.5px;
-        line-height: 1.6;
-      }
+      .list-item h5 { margin: 0 0 4px; font-size: 15px; letter-spacing: -.2px; color: #f8fafc; }
+      .list-item p { margin: 0; color: var(--muted); font-size: 13.5px; line-height: 1.68; }
 
-      /* CTA band */
       .cta-band {
-        background: linear-gradient(120deg, rgba(8, 145, 178, 0.16), rgba(33, 101, 170, 0.1));
-        border: 1px solid rgba(8, 145, 178, 0.22);
-        border-radius: 24px;
-        padding: 34px 22px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 16px;
-        box-shadow: 0 18px 40px rgba(2, 8, 23, 0.06);
+        background: linear-gradient(135deg, rgba(6,182,212,.12), rgba(37,99,235,.12));
+        border: 1px solid rgba(96,165,250,.18); border-radius: 28px; padding: 36px 26px; display: flex; align-items: center; justify-content: space-between; gap: 18px;
+        box-shadow: 0 20px 50px rgba(2,8,23,.32);
       }
-      @media (max-width: 860px) {
-        .cta-band {
-          flex-direction: column;
-          text-align: center;
-        }
-      }
-      .cta-band h3 {
-        margin: 0 0 6px;
-        font-size: 22px;
-        letter-spacing: -0.3px;
-      }
-      .cta-band p {
-        margin: 0;
-        color: var(--muted);
-        line-height: 1.6;
-        max-width: 700px;
-      }
+      @media (max-width: 860px) { .cta-band { flex-direction: column; text-align: center; } }
+      .cta-band h3 { margin: 0 0 6px; font-size: 24px; letter-spacing: -.5px; color: #f8fafc; }
+      .cta-band p { margin: 0; color: var(--muted); line-height: 1.7; max-width: 700px; }
 
-      /* Contact */
-      .contact-grid {
-        margin-top: 30px;
-        display: grid;
-        grid-template-columns: 1fr 1.2fr;
-        gap: 18px;
-      }
-      @media (max-width: 920px) {
-        .contact-grid {
-          grid-template-columns: 1fr;
-        }
-      }
+      .contact-grid { margin-top: 30px; display: grid; grid-template-columns: 1fr 1.2fr; gap: 18px; }
+      @media (max-width: 920px) { .contact-grid { grid-template-columns: 1fr; } }
       .contact-card {
-        background: var(--card);
-        border: 1px solid var(--border);
-        border-radius: var(--radius2);
-        box-shadow: var(--shadow);
-        padding: 22px;
+        background: linear-gradient(180deg, rgba(15,23,42,.88), rgba(7,13,27,.92));
+        border: 1px solid rgba(148,163,184,.14); border-radius: var(--radius2); box-shadow: var(--shadow); padding: 24px;
       }
       .info-item {
-        display: flex;
-        gap: 12px;
-        align-items: flex-start;
-        padding: 12px 0;
-        border-bottom: 1px dashed #e2e8f0;
+        display: flex; gap: 12px; align-items: flex-start; padding: 14px 0; border-bottom: 1px dashed rgba(148,163,184,.12);
       }
-      .info-item:last-child {
-        border-bottom: none;
-      }
-      .info-item b {
-        display: block;
-        font-size: 13px;
-      }
-      .info-item span {
-        color: var(--muted2);
-        font-size: 13px;
-      }
+      .info-item:last-child { border-bottom: none; }
+      .info-item b { display: block; font-size: 13px; color: #f8fafc; }
+      .info-item span { color: var(--muted); font-size: 13px; }
 
-      form {
-        display: grid;
-        gap: 12px;
+      form { display: grid; gap: 12px; }
+      label { font-size: 12px; font-weight: 800; color: #cbd5e1; letter-spacing: .02em; }
+      input, textarea {
+        width: 100%; padding: 13px 14px; border-radius: 14px; border: 1px solid rgba(148,163,184,.16);
+        outline: none; font-size: 14px; background: rgba(255,255,255,.03); color: #f8fafc;
       }
-      label {
-        font-size: 12px;
-        font-weight: 800;
-        color: #0f172a;
-        letter-spacing: 0.02em;
-      }
-      input,
-      textarea {
-        width: 100%;
-        padding: 12px 12px;
-        border-radius: 12px;
-        border: 1px solid var(--border);
-        outline: none;
-        font-size: 14px;
-        background: #fff;
-      }
-      input:focus,
-      textarea:focus {
-        border-color: rgba(33, 101, 170, 0.55);
-        box-shadow: 0 0 0 4px var(--ring);
-      }
-      textarea {
-        min-height: 130px;
-        resize: vertical;
-      }
+      input::placeholder, textarea::placeholder { color: #64748b; }
+      input:focus, textarea:focus { border-color: rgba(59,130,246,.55); box-shadow: 0 0 0 4px var(--ring); }
+      textarea { min-height: 130px; resize: vertical; }
 
-      /* Footer */
-      footer {
-        background: #0a1f2d;
-        color: rgba(255, 255, 255, 0.9);
-        margin-top: 24px;
-      }
+      footer { background: #020617; color: rgba(255,255,255,.9); margin-top: 24px; border-top: 1px solid rgba(148,163,184,.10); }
       .footer-inner {
-        max-width: var(--max);
-        margin: 0 auto;
-        padding: 44px 18px;
-        display: grid;
-        grid-template-columns: 1.3fr 1fr 1fr 1fr;
-        gap: 18px;
+        max-width: var(--max); margin: 0 auto; padding: 44px 18px; display: grid; grid-template-columns: 1.3fr 1fr 1fr 1fr; gap: 18px;
       }
-      @media (max-width: 920px) {
-        .footer-inner {
-          grid-template-columns: 1fr 1fr;
-        }
+      @media (max-width: 920px) { .footer-inner { grid-template-columns: 1fr 1fr; } }
+      @media (max-width: 520px) { .footer-inner { grid-template-columns: 1fr; } }
+      .footer-col h6 { margin: 0 0 10px; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.52); }
+      .footer-col a { display: block; padding: 6px 0; color: rgba(255,255,255,.82); font-size: 14px; }
+      .footer-col a:hover { color: #fff; }
+      .copyright { border-top: 1px solid rgba(255,255,255,.08); padding: 14px 18px; text-align: center; color: rgba(255,255,255,.55); font-size: 13px; }
+
+      .hero-badges {
+        margin: 18px auto 0; max-width: 980px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;
       }
-      @media (max-width: 520px) {
-        .footer-inner {
-          grid-template-columns: 1fr;
-        }
+      .hero-badges span {
+        display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 999px;
+        background: rgba(255,255,255,.05); border: 1px solid rgba(148,163,184,.14); color: #dbeafe; font-size: 13px; font-weight: 600;
       }
-      .footer-col h6 {
-        margin: 0 0 10px;
-        font-size: 12px;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.7);
+      .hero-metrics {
+        margin-top: 34px; display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 16px;
       }
-      .footer-col a {
-        display: block;
-        padding: 6px 0;
-        color: rgba(255, 255, 255, 0.85);
-        font-size: 14px;
+      @media (max-width: 860px) { .hero-metrics { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+      @media (max-width: 520px) { .hero-metrics { grid-template-columns: 1fr; } }
+      .metric {
+        text-align: left; padding: 18px 20px; border-radius: 20px; background: rgba(8,15,30,.56);
+        border: 1px solid rgba(148,163,184,.12); box-shadow: 0 12px 34px rgba(2,8,23,.22); backdrop-filter: blur(10px);
       }
-      .footer-col a:hover {
-        color: #fff;
-      }
-      .copyright {
-        border-top: 1px solid rgba(255, 255, 255, 0.12);
-        padding: 14px 18px;
-        text-align: center;
-        color: rgba(255, 255, 255, 0.65);
-        font-size: 13px;
-      }
+      .metric strong { display: block; font-size: 28px; line-height: 1; color: #f8fafc; margin-bottom: 8px; }
+      .metric span { color: var(--muted); font-size: 13px; line-height: 1.5; display: block; }
     </style>
 
     <!-- Google tag (gtag.js) -->
@@ -757,6 +431,7 @@
           <a href="#sobre">Sobre</a>
           <a href="#funcionalidades">Funcionalidades</a>
           <a href="#seguranca">Segurança</a>
+          <a href="#modulos">Módulos</a>
           <a href="#para-quem-e">Para quem é</a>
           <a class="btn btn-primary" href="#contato">Contato</a>
         </nav>
@@ -777,6 +452,7 @@
         <a href="#sobre">Sobre</a>
         <a href="#funcionalidades">Funcionalidades</a>
         <a href="#seguranca">Segurança</a>
+        <a href="#modulos">Módulos</a>
         <a href="#para-quem-e">Para quem é</a>
         <div class="cta">
           <a class="btn btn-primary" href="#contato" style="width: 100%">Contato</a>
@@ -789,20 +465,43 @@
       <section class="hero" id="home" style="max-width: none; padding: 0">
         <div class="hero-inner">
           <!-- H1 otimizado para ranqueamento -->
-          <h1>Plataforma de Gestão de Estudos Clínicos para Hospitais e Centros de Pesquisa</h1>
+          <h1>A plataforma que conecta gestão clínica, cronograma, financeiro e rastreabilidade em estudos clínicos</h1>
 
           <p>
-            Healthuture Solutions — gestão de participantes, coleta de dados,
-            questionários, auditoria e rastreabilidade.
+            Healthuture Solutions reúne em um só lugar a operação clínica, o acompanhamento do participante e a visão financeira do estudo — sem depender de controles soltos, planilhas dispersas ou processos difíceis de auditar.
           </p>
           <p class="sub">
-            Simplifique processos, organize informações e acompanhe estudos
-            clínicos com segurança, agilidade e conformidade.
+            Tenha gestão clínica à vista, cronograma de visitas, cobrança por regras, gestão financeira e timeline do participante com mais controle, padronização e eficiência operacional.
           </p>
+
+          <div class="hero-badges" aria-label="Principais diferenciais">
+            <span>⚡ Operação clínica e financeira conectadas</span>
+            <span>🔎 Mais rastreabilidade e menos planilhas</span>
+            <span>📈 Visão executiva para crescer com escala</span>
+          </div>
 
           <div class="hero-actions">
             <a class="btn btn-primary" href="#contato">Solicitar Demonstração</a>
             <a class="btn btn-outline" href="#funcionalidades">Ver funcionalidades</a>
+          </div>
+
+          <div class="hero-metrics" aria-label="Benefícios da plataforma">
+            <div class="metric">
+              <strong>360°</strong>
+              <span>Visão integrada da operação clínica, financeira e documental do estudo.</span>
+            </div>
+            <div class="metric">
+              <strong>1 só lugar</strong>
+              <span>Cronograma, timeline, pendências, regras e faturamento centralizados.</span>
+            </div>
+            <div class="metric">
+              <strong>+ controle</strong>
+              <span>Mais previsibilidade para a coordenação acompanhar execução e cobrança.</span>
+            </div>
+            <div class="metric">
+              <strong>SaaS ready</strong>
+              <span>Interface com aparência moderna, profissional e preparada para escala.</span>
+            </div>
           </div>
 
           <a class="scroll-down" href="#sobre" aria-label="Ir para seção Sobre"> ↓ </a>
@@ -813,26 +512,16 @@
       <section id="sobre">
         <div style="text-align: left">
           <span class="pill">Sobre nós</span>
-          <h2 class="section-title">O que é a Healthuture Solutions?</h2>
+          <h2 class="section-title">Uma plataforma pensada para a operação real da pesquisa clínica</h2>
         </div>
 
         <div class="grid-2">
           <div class="panel pad">
             <p>
-              A Healthuture Solutions é uma startup dedicada ao desenvolvimento
-              de soluções digitais para a área da saúde. Nosso principal produto
-              é uma plataforma voltada para hospitais, clínicas e equipes de
-              pesquisa clínica, criada para centralizar, automatizar e otimizar
-              a gestão de estudos clínicos, o registro de participantes e a
-              coleta de dados.
+              A Healthuture Solutions desenvolve uma plataforma criada para a rotina real de hospitais, clínicas e centros de pesquisa. Centralizamos a operação do estudo em um único ambiente para organizar participantes, visitas, dados clínicos, documentos, regras de cobrança e informações financeiras.
             </p>
             <p>
-              Nossa missão é transformar a forma como instituições de saúde
-              conduzem e gerenciam pesquisas clínicas, oferecendo uma plataforma
-              completa que une tecnologia avançada, simplicidade operacional e
-              alta confiabilidade. Atuamos para garantir segurança da
-              informação, rastreabilidade e conformidade regulatória em todas
-              as etapas do processo.
+              Nossa proposta é substituir controles fragmentados por uma gestão mais clara, rastreável e acionável. A plataforma conecta execução assistencial, visão gerencial e impacto financeiro, ajudando o centro a ganhar produtividade, previsibilidade e confiança em cada etapa do estudo.
             </p>
           </div>
 
@@ -845,7 +534,7 @@
                 onerror="this.onerror=null; this.src='assets/worklist.ico';"
               />
               <figcaption>
-                Visão rápida: acompanhe estudos, participantes e pendências em um único painel.
+                Visão rápida: acompanhe estudos, participantes, pendências, visitas e prioridades em um único painel.
               </figcaption>
             </figure>
           </div>
@@ -855,21 +544,19 @@
       <!-- Participante -->
       <section id="participante" style="text-align: center">
         <span class="pill">Participante</span>
-        <h2 class="section-title">Experiência do participante</h2>
+        <h2 class="section-title">Experiência do participante com mais adesão e menos atrito</h2>
         <p class="section-desc">
-          Uma jornada simples e segura para aceitar termos, responder questionários e
-          registrar informações ao longo do estudo.
+          Uma jornada digital simples e segura para aceitar termos, responder questionários, registrar sintomas e manter o acompanhamento ao longo do estudo.
         </p>
 
         <div class="grid-2" style="text-align: left">
           <div class="panel pad">
-            <h3 style="margin-top: 0">Fluxo claro, do termo ao acompanhamento</h3>
+            <h3 style="margin-top: 0">Do aceite ao acompanhamento contínuo</h3>
             <p>
-              O participante acessa a plataforma, revisa e aceita os termos necessários e,
-              em seguida, realiza as tarefas do estudo com orientação e rastreabilidade.
+              O participante acessa a plataforma, visualiza os termos aplicáveis, realiza o aceite e segue com as atividades previstas no estudo de forma guiada, organizada e rastreável.
             </p>
             <p style="margin-bottom: 0">
-              Isso reduz fricção, melhora adesão e facilita o acompanhamento pela equipe.
+              Isso melhora a experiência, aumenta a adesão e facilita o acompanhamento pela equipe com mais visibilidade sobre cada etapa da jornada.
             </p>
           </div>
 
@@ -890,80 +577,133 @@
       <!-- Funcionalidades -->
       <section id="funcionalidades" style="text-align: center">
         <span class="pill">Funcionalidades</span>
-        <h2 class="section-title">Principais recursos</h2>
+        <h2 class="section-title">Funcionalidades que tiram a operação do improviso</h2>
         <p class="section-desc">
-          Uma plataforma completa com as ferramentas necessárias para gerenciar
-          estudos clínicos de forma eficiente e segura.
+          Recursos desenhados para dar controle operacional, visão gerencial e mais previsibilidade ao centro de pesquisa.
         </p>
 
         <div class="cards">
           <div class="card">
             <div class="icon">👤</div>
-            <h4>Cadastro e gerenciamento de pacientes</h4>
+            <h4>Cadastro e gerenciamento de participantes</h4>
             <p>
-              Sistema completo para registro e acompanhamento de participantes
-              em estudos clínicos com interface intuitiva.
-            </p>
-          </div>
-
-          <div class="card">
-            <div class="icon">🧪</div>
-            <h4>Gestão de estudos clínicos</h4>
-            <p>
-              Controle total sobre estudos em andamento, com organização de
-              informações e cronogramas.
-            </p>
-          </div>
-
-          <div class="card">
-            <div class="icon">❤️</div>
-            <h4>Registro de sintomas e coleta de dados</h4>
-            <p>
-              Coleta estruturada de dados clínicos com formulários
-              personalizáveis e rastreabilidade.
-            </p>
-          </div>
-
-          <div class="card">
-            <div class="icon">📝</div>
-            <h4>Aplicação de questionários</h4>
-            <p>
-              Ferramentas para avaliação técnica e consulta de dados por
-              questionários customizados.
-            </p>
-          </div>
-
-          <div class="card">
-            <div class="icon">📄</div>
-            <h4>Gestão de termos e documentos</h4>
-            <p>
-              Upload, controle de aceite e gerenciamento completo de documentos
-              e termos de consentimento.
-            </p>
-          </div>
-
-          <div class="card">
-            <div class="icon">🔐</div>
-            <h4>Controle de acesso por perfil</h4>
-            <p>
-              Permissões granulares para administradores e usuários com
-              diferentes níveis de acesso.
+              Centralize o cadastro, acompanhe a jornada do participante e mantenha histórico estruturado ao longo do estudo.
             </p>
           </div>
 
           <div class="card">
             <div class="icon">📊</div>
-            <h4>Relatórios personalizáveis</h4>
-            <p>Relatórios com filtros avançados para análise de dados.</p>
+            <h4>Gestão clínica à vista</h4>
+            <p>
+              Visualize rapidamente pendências, visitas em atraso, eventos, tarefas críticas e prioridades operacionais em poucos cliques.
+            </p>
           </div>
 
           <div class="card">
-            <div class="icon">🗂️</div>
-            <h4>Centralização de dados</h4>
+            <div class="icon">📅</div>
+            <h4>Cronograma de visitas</h4>
             <p>
-              Todos os dados em um único lugar, facilitando o acesso e a gestão
-              de informações críticas.
+              Estruture o protocolo em visitas e procedimentos, acompanhe status, reagendamentos, pendências e execução pela equipe.
             </p>
+          </div>
+
+          <div class="card">
+            <div class="icon">💰</div>
+            <h4>Cobrança por regras de cronograma</h4>
+            <p>
+              Transforme visitas e procedimentos realizados em cobranças padronizadas por meio de regras parametrizáveis por estudo.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="icon">🏦</div>
+            <h4>Gestão financeira</h4>
+            <p>
+              Controle itens faturáveis, previsões, repasses e pendências com visão financeira conectada ao que foi executado no estudo.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="icon">🕒</div>
+            <h4>Timeline do participante</h4>
+            <p>
+              Acompanhe toda a jornada do participante em ordem cronológica, com visitas, sintomas, eventos, documentos e interações relevantes.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="icon">❤️</div>
+            <h4>Registro de sintomas e eventos</h4>
+            <p>
+              Registre sintomas e eventos com estrutura, rastreabilidade e mais apoio para o acompanhamento assistencial e regulatório.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="icon">📝</div>
+            <h4>Questionários, termos e documentos</h4>
+            <p>
+              Aplique questionários, organize termos de aceite e mantenha documentos centralizados em um único ambiente.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Módulos estratégicos -->
+      <section id="modulos" style="text-align: center">
+        <span class="pill">Operação ponta a ponta</span>
+        <h2 class="section-title">Da execução clínica ao faturamento com mais controle</h2>
+        <p class="section-desc">
+          A plataforma conecta operação clínica, acompanhamento gerencial e regras financeiras para que o centro tenha mais controle, menos retrabalho e melhor capacidade de gestão.
+        </p>
+
+        <div class="grid-2" style="text-align: left">
+          <div class="panel pad">
+            <h3 style="margin-top: 0">Gestão clínica à vista com contexto completo</h3>
+            <p>
+              Tenha clareza imediata sobre o que está pendente, atrasado, concluído ou exige ação prioritária. Com a timeline do participante, a equipe entende o contexto completo da jornada sem depender de buscas dispersas.
+            </p>
+            <p>
+              Isso acelera a tomada de decisão, reduz retrabalho e melhora a atuação da coordenação e da equipe operacional no dia a dia.
+            </p>
+          </div>
+
+          <div class="panel pad">
+            <h3 style="margin-top: 0">Cronograma com reflexo financeiro estruturado</h3>
+            <p>
+              Configure cronogramas por estudo, defina regras de cobrança por visita, procedimento ou condição executada e transforme a operação diária em informação financeira utilizável.
+            </p>
+            <p>
+              Assim, o centro ganha previsibilidade, mais padronização no faturamento e controle real sobre o que foi executado, o que está pendente e o que pode ser cobrado.
+            </p>
+          </div>
+        </div>
+
+        <div class="cards cards-scroll" style="margin-top: 24px; grid-template-columns: repeat(5, 1fr)">
+          <div class="card">
+            <div class="icon">📈</div>
+            <h4>Gestão clínica à vista</h4>
+            <p>Cards operacionais com filtros para enxergar gargalos, pendências e prioridades do estudo.</p>
+          </div>
+          <div class="card">
+            <div class="icon">🗓️</div>
+            <h4>Cronograma de visitas</h4>
+            <p>Visitas planejadas por protocolo, com acompanhamento de execução, status e justificativas.</p>
+          </div>
+          <div class="card">
+            <div class="icon">⚙️</div>
+            <h4>Cobrança por regras</h4>
+            <p>Parametrização de regras para gerar cobranças a partir do cronograma e dos itens realizados.</p>
+          </div>
+          <div class="card">
+            <div class="icon">💳</div>
+            <h4>Gestão financeira</h4>
+            <p>Conciliação entre operação e faturamento com visão de itens cobrados, pendentes e previstos.</p>
+          </div>
+          <div class="card">
+            <div class="icon">📍</div>
+            <h4>Timeline</h4>
+            <p>Linha do tempo do participante com eventos clínicos, documentos, respostas e movimentações.</p>
           </div>
         </div>
       </section>
@@ -971,10 +711,9 @@
       <!-- Segurança -->
       <section id="seguranca" style="text-align: center">
         <span class="pill">Segurança e conformidade</span>
-        <h2 class="section-title">Segurança em primeiro lugar</h2>
+        <h2 class="section-title">Segurança, auditoria e conformidade desde a base</h2>
         <p class="section-desc">
-          Nosso sistema é desenvolvido com foco em segurança, privacidade e boas
-          práticas para proteção de dados sensíveis.
+          Nossa plataforma é desenvolvida com foco em segurança, privacidade e rastreabilidade para proteger dados sensíveis e apoiar a conformidade operacional.
         </p>
 
         <div class="security-wrap">
@@ -1023,11 +762,9 @@
       <!-- Para quem é -->
       <section id="para-quem-e" style="text-align: center">
         <span class="pill">Para quem é</span>
-        <h2 class="section-title">Indicado para</h2>
+        <h2 class="section-title">Feita para quem precisa operar, controlar e evoluir</h2>
         <p class="section-desc">
-          Nossa plataforma foi desenvolvida para atender necessidades
-          específicas de diferentes profissionais e instituições na área da
-          pesquisa clínica.
+          A plataforma atende diferentes perfis envolvidos na pesquisa clínica, com foco em organização, visibilidade e execução consistente.
         </p>
 
         <div class="cards cards-scroll" style="grid-template-columns: repeat(4, 1fr)">
@@ -1035,8 +772,7 @@
             <div class="icon">🏥</div>
             <h4>Hospitais e clínicas</h4>
             <p>
-              Instituições de saúde que precisam de organização e rastreabilidade
-              no acompanhamento de estudos.
+              Instituições que precisam de mais organização, rastreabilidade e controle sobre a operação dos estudos.
             </p>
           </div>
 
@@ -1044,23 +780,21 @@
             <div class="icon">🔬</div>
             <h4>Centros de pesquisa clínica</h4>
             <p>
-              Controle de estudos e coleta estruturada de dados em um único
-              ambiente.
+              Gestão operacional, acompanhamento clínico e coleta estruturada de dados em um único ambiente.
             </p>
           </div>
 
           <div class="card">
             <div class="icon">🧑‍⚕️</div>
             <h4>CROs e coordenadores</h4>
-            <p>Organização de pesquisas e gestão de múltiplos estudos.</p>
+            <p>Mais visibilidade sobre múltiplos estudos, equipes, pendências e execução do protocolo.</p>
           </div>
 
           <div class="card">
             <div class="icon">📋</div>
             <h4>Equipes de acompanhamento</h4>
             <p>
-              Monitoramento de participantes e suporte ao registro consistente
-              de informações clínicas.
+              Monitoramento de participantes, execução de visitas e suporte ao registro consistente de informações clínicas.
             </p>
           </div>
         </div>
@@ -1070,10 +804,9 @@
       <section style="padding-top: 0">
         <div class="cta-band">
           <div>
-            <h3>Pronto para transformar sua gestão de estudos clínicos?</h3>
+            <h3>Pronto para substituir controles dispersos por uma gestão mais inteligente?</h3>
             <p>
-              Entre em contato e descubra como a Healthuture Solutions pode
-              otimizar seus processos de pesquisa clínica.
+              Descubra como a Healthuture Solutions pode fortalecer a operação clínica, organizar o cronograma, conectar o financeiro e dar mais visibilidade ao seu estudo.
             </p>
           </div>
           <a class="btn btn-primary" href="#contato">Falar com nossa equipe</a>
@@ -1083,10 +816,9 @@
       <!-- Contato -->
       <section id="contato" style="text-align: center">
         <span class="pill">Contato</span>
-        <h2 class="section-title">Entre em contato</h2>
+        <h2 class="section-title">Converse com a nossa equipe</h2>
         <p class="section-desc">
-          Estamos prontos para ajudar você a transformar a gestão de estudos
-          clínicos na sua instituição.
+          Estamos prontos para mostrar como sua instituição pode ganhar mais controle, rastreabilidade e eficiência na gestão de estudos clínicos.
         </p>
 
         <div class="contact-grid">
@@ -1182,7 +914,7 @@
     <footer>
       <div class="footer-inner">
         <div class="footer-col">
-          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px">
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px">
             <img
               src="assets/logo.png"
               alt="Logo"
@@ -1190,74 +922,39 @@
               style="width: 48px; height: 48px"
             />
             <strong>Healthuture Solutions</strong>
-            <div class="footer-col">
-              <h6>Legal</h6>
-              <a href="politica-de-privacidade.html" target="_blank" rel="noopener">Política de Privacidade</a>
-              <a href="termos-de-uso.html" target="_blank" rel="noopener">Termos de Uso</a>
-            </div>
+          </div>
+          <p style="margin:0; color: var(--muted); line-height:1.7; font-size:14px; max-width:320px;">
+            Plataforma para gestão de estudos clínicos com foco em eficiência operacional, rastreabilidade e visão estratégica.
+          </p>
         </div>
-      </div>
 
         <div class="footer-col">
           <h6>Navegação</h6>
           <a href="#sobre">Sobre</a>
           <a href="#funcionalidades">Funcionalidades</a>
           <a href="#seguranca">Segurança</a>
+          <a href="#modulos">Módulos</a>
           <a href="#contato">Contato</a>
         </div>
 
         <div class="footer-col">
-          <h6>Contato</h6>
+          <h6>Legal</h6>
+          <a href="politica-de-privacidade.html" target="_blank" rel="noopener">Política de Privacidade</a>
+          <a href="termos-de-uso.html" target="_blank" rel="noopener">Termos de Uso</a>
           <a href="mailto:contato@healthuturesolutions.com.br">contato@healthuturesolutions.com.br</a>
           <a href="#">São Paulo - SP | Brasil</a>
         </div>
-        
+
         <div class="footer-col">
           <h6>Soluções</h6>
           <a href="auditoria-pesquisa-clinica.html">Auditoria em Pesquisa Clínica</a>
           <a href="registro-eventos-adversos.html">Registro de Eventos Adversos</a>
+          <a href="https://www.linkedin.com/company/healthuture-solutions/" target="_blank" rel="noopener">LinkedIn</a>
         </div>
-
-        
       </div>
 
       <div class="copyright">© 2026 Healthuture Solutions. Todos os direitos reservados.</div>
-
-      <div style="border-top: 1px solid rgba(255,255,255,0.12); padding: 24px 18px; text-align:center;">
-        <h6 style="
-          margin:0 0 14px;
-          font-size:13px;
-          letter-spacing:0.1em;
-          text-transform:uppercase;
-          color:rgba(255,255,255,0.7);">
-          Siga-nos nas redes sociais
-        </h6>
-
-        <a
-          href="https://www.linkedin.com/company/healthuture-solutions/"
-          target="_blank"
-          rel="noopener"
-          aria-label="LinkedIn Healthuture Solutions"
-          style="
-            display:inline-flex;
-            align-items:center;
-            justify-content:center;
-            width:48px;
-            height:48px;
-            border-radius:50%;
-            background:#0A66C2;
-            transition:0.2s ease;
-          "
-          onmouseover="this.style.transform='scale(1.08)'"
-          onmouseout="this.style.transform='scale(1)'"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="white" viewBox="0 0 24 24">
-            <path d="M20.447 20.452H17.21v-5.569c0-1.327-.025-3.036-1.85-3.036-1.853 0-2.136 1.445-2.136 2.939v5.666H9.988V9h3.112v1.561h.044c.434-.82 1.494-1.683 3.073-1.683 3.287 0 3.893 2.164 3.893 4.977v6.597zM5.337 7.433a1.812 1.812 0 1 1 0-3.625 1.812 1.812 0 0 1 0 3.625zM6.956 20.452H3.717V9h3.239v11.452zM22.225 0H1.771C.792 0 0 .771 0 1.723v20.554C0 23.229.792 24 1.771 24h20.451C23.2 24 24 23.229 24 22.277V1.723C24 .771 23.2 0 22.222 0h.003z"/>
-          </svg>
-        </a>
-      </div>
     </footer>
-
     <script>
       const hamb = document.getElementById("hamb");
       const menu = document.getElementById("mobileMenu");
