@@ -281,17 +281,38 @@
       }
 
       .cards {
-        margin-top: 36px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px;
+        margin-top: 36px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px;
       }
-      @media (max-width: 1040px) { .cards { grid-template-columns: repeat(2, 1fr); } }
-      @media (max-width: 560px) { .cards { grid-template-columns: 1fr; } }
-      @media (max-width: 700px) {
+      @media (max-width: 1040px) { .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+      @media (max-width: 640px) { .cards { grid-template-columns: 1fr !important; gap: 14px; } }
+      @media (max-width: 900px) {
         .cards.cards-scroll {
-          grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: minmax(260px, 82vw);
-          overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; scroll-snap-type: x mandatory;
-          overscroll-behavior-x: contain; padding-bottom: 10px;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: minmax(280px, 82vw);
+          grid-template-columns: none !important;
+          overflow-x: auto;
+          overflow-y: hidden;
+          -webkit-overflow-scrolling: touch;
+          scroll-snap-type: x proximity;
+          overscroll-behavior-x: contain;
+          padding-bottom: 10px;
         }
-        .cards.cards-scroll .card { scroll-snap-align: start; }
+        .cards.cards-scroll .card {
+          scroll-snap-align: start;
+          min-height: auto;
+        }
+      }
+      @media (max-width: 640px) {
+        .cards.cards-scroll {
+          display: flex;
+          gap: 14px;
+          padding-inline: 2px;
+        }
+        .cards.cards-scroll .card {
+          flex: 0 0 84vw;
+          max-width: 84vw;
+        }
       }
 
       .card {
@@ -299,6 +320,13 @@
         border: 1px solid rgba(148,163,184,.14); border-radius: 22px; box-shadow: 0 20px 42px rgba(2,8,23,.26);
         padding: 22px; min-height: 200px; transition: transform .14s ease, box-shadow .14s ease, border-color .14s ease, background .14s ease;
         position: relative; overflow: hidden;
+      }
+      @media (max-width: 640px) {
+        .card {
+          padding: 18px;
+          min-height: auto;
+          border-radius: 20px;
+        }
       }
       .card::after {
         content: ""; position: absolute; inset: auto -20% -40% auto; width: 120px; height: 120px;
@@ -314,6 +342,10 @@
       }
       .card h4 { margin: 0 0 8px; font-size: 17px; letter-spacing: -.25px; color: #f8fafc; }
       .card p { margin: 0; color: var(--muted); line-height: 1.72; font-size: 14px; }
+      @media (max-width: 640px) {
+        .card h4 { font-size: 18px; line-height: 1.25; }
+        .card p { font-size: 15px; line-height: 1.68; }
+      }
 
       .security-wrap { margin-top: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: stretch; }
       @media (max-width: 920px) { .security-wrap { grid-template-columns: 1fr; } }
@@ -398,6 +430,43 @@
       }
       .metric strong { display: block; font-size: 28px; line-height: 1; color: #f8fafc; margin-bottom: 8px; }
       .metric span { color: var(--muted); font-size: 13px; line-height: 1.5; display: block; }
+
+      @media (max-width: 640px) {
+        .topbar-inner {
+          min-height: 72px;
+          padding: 10px 14px;
+        }
+        .brand img {
+          width: 92px;
+          height: 78px;
+        }
+        .btn {
+          padding: 12px 16px;
+          border-radius: 16px;
+        }
+        .hero-inner {
+          padding: 60px 14px 56px;
+        }
+        main section {
+          padding: 64px 14px;
+        }
+        .section-title {
+          font-size: clamp(28px, 8vw, 36px);
+        }
+        .section-desc {
+          font-size: 15px;
+          line-height: 1.75;
+        }
+        #funcionalidades .cards,
+        #modulos .cards {
+          text-align: left;
+        }
+        #funcionalidades .icon,
+        #modulos .icon {
+          margin-bottom: 14px;
+        }
+      }
+
     </style>
 
     <!-- Google tag (gtag.js) -->
@@ -679,7 +748,7 @@
           </div>
         </div>
 
-        <div class="cards cards-scroll" style="margin-top: 24px; grid-template-columns: repeat(5, 1fr)">
+        <div class="cards cards-scroll" style="margin-top: 24px">
           <div class="card">
             <div class="icon">📈</div>
             <h4>Gestão clínica à vista</h4>
@@ -767,7 +836,7 @@
           A plataforma atende diferentes perfis envolvidos na pesquisa clínica, com foco em organização, visibilidade e execução consistente.
         </p>
 
-        <div class="cards cards-scroll" style="grid-template-columns: repeat(4, 1fr)">
+        <div class="cards cards-scroll" >
           <div class="card">
             <div class="icon">🏥</div>
             <h4>Hospitais e clínicas</h4>
@@ -982,18 +1051,3 @@
     </script>
   </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
