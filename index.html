@@ -8,7 +8,7 @@
     <title>Plataforma Completa para Gestão de Estudos Clínicos e Insumos | Healthuture Solutions</title>
     <meta
       name="description"
-      content="Plataforma completa para gestão de estudos clínicos em hospitais, centros de pesquisa e CROs. Gestão clínica à vista, monitoramento para CROs e patrocinadores, gestão de insumos, pendências operacionais, cronograma de visitas, cobrança por regras, gestão financeira, timeline do participante, auditoria e conformidade com a LGPD."
+      content="Plataforma completa para gestão de estudos clínicos em hospitais, centros de pesquisa, CROs e indústria. Sponsor Command Center, orçamentos por link seguro, transporte de amostras com cadeia de frio, gestão clínica à vista, gestão de insumos, pendências operacionais, gestão financeira, timeline do participante, auditoria e conformidade com a LGPD."
     />
     <link rel="canonical" href="https://healthuturesolutions.com.br/" />
 
@@ -25,7 +25,7 @@
     <meta property="og:title" content="Plataforma Completa para Gestão de Estudos Clínicos e Insumos | Healthuture Solutions" />
     <meta
       property="og:description"
-      content="Plataforma completa para pesquisa clínica com gestão clínica à vista, monitoramento para CROs e patrocinadores, gestão de insumos, pendências operacionais, cronograma de visitas, cobrança por regras, gestão financeira, timeline do participante, auditoria e rastreabilidade."
+      content="Plataforma completa para pesquisa clínica com Sponsor Command Center, orçamentos por link seguro, transporte de amostras com cadeia de frio, gestão clínica à vista, gestão de insumos, pendências operacionais, gestão financeira, timeline do participante, auditoria e rastreabilidade."
     />
     <meta property="og:url" content="https://healthuturesolutions.com.br/" />
     <meta property="og:image" content="https://healthuturesolutions.com.br/assets/logo.png" />
@@ -36,7 +36,7 @@
     <meta name="twitter:title" content="Plataforma Completa para Gestão de Estudos Clínicos e Insumos | Healthuture Solutions" />
     <meta
       name="twitter:description"
-      content="Gestão de estudos clínicos com visão clínica à vista, gestão de insumos, pendências operacionais, financeiro integrado, timeline do participante e conformidade LGPD."
+      content="Gestão de estudos clínicos com Sponsor Command Center, orçamentos por link seguro, transporte de amostras, gestão de insumos, pendências operacionais, financeiro integrado e conformidade LGPD."
     />
     <meta name="twitter:image" content="https://healthuturesolutions.com.br/assets/logo.png" />
 
@@ -67,7 +67,7 @@
             "name": "Healthuture Solutions",
             "operatingSystem": "Web",
             "applicationCategory": "MedicalBusinessApplication",
-            "description": "Plataforma completa para gestão de estudos clínicos com gestão clínica à vista, gestão de insumos, pendências operacionais, cronograma de visitas, cobrança por regras, gestão financeira, timeline do participante, auditoria e relatórios.",
+            "description": "Plataforma completa para gestão de estudos clínicos com Sponsor Command Center para patrocinadores e indústria, orçamentos por link seguro, transporte de amostras com cadeia de frio, gestão clínica à vista, gestão de insumos, pendências operacionais, gestão financeira, timeline do participante, auditoria e relatórios.",
             "url": "https://healthuturesolutions.com.br/",
             "publisher": { "@id": "https://healthuturesolutions.com.br/#org" }
           }
@@ -99,6 +99,16 @@
         --radius: 18px;
         --radius2: 26px;
         --max: 1180px;
+
+        --text-on-light: #0f172a;
+        --muted-on-light: #475569;
+        --muted2-on-light: #64748b;
+        --bg-light-1: #ffffff;
+        --bg-light-2: #eef3fb;
+        --card-on-light: #ffffff;
+        --border-on-light: rgba(15, 23, 42, 0.09);
+        --shadow-on-light: 0 16px 40px rgba(15, 23, 42, 0.07);
+        --ring-on-light: rgba(37, 99, 235, 0.16);
       }
 
       * { box-sizing: border-box; }
@@ -369,6 +379,27 @@
       .list-item h5 { margin: 0 0 4px; font-size: 15px; letter-spacing: -.2px; color: #f8fafc; }
       .list-item p { margin: 0; color: var(--muted); font-size: 13.5px; line-height: 1.68; }
 
+      .severity-badge {
+        display: inline-flex; align-items: center; gap: 6px; font-size: 10.5px; font-weight: 800;
+        letter-spacing: .05em; text-transform: uppercase; padding: 5px 10px; border-radius: 999px; flex-shrink: 0;
+      }
+      .severity-critical { color: #fecaca; background: rgba(239,68,68,.16); border: 1px solid rgba(248,113,113,.35); }
+      .severity-high { color: #fed7aa; background: rgba(249,115,22,.16); border: 1px solid rgba(251,146,60,.35); }
+      .severity-medium { color: #fef08a; background: rgba(234,179,8,.16); border: 1px solid rgba(250,204,21,.35); }
+
+      .step-list { display: flex; flex-direction: column; gap: 0; counter-reset: step; }
+      .step-item { display: flex; gap: 14px; padding: 14px 0; border-bottom: 1px dashed rgba(148,163,184,.16); }
+      .step-item:last-child { border-bottom: none; }
+      .step-num {
+        counter-increment: step; flex: 0 0 auto; width: 30px; height: 30px; border-radius: 10px;
+        background: linear-gradient(135deg, rgba(37,99,235,.22), rgba(6,182,212,.20));
+        border: 1px solid rgba(96,165,250,.22); display: flex; align-items: center; justify-content: center;
+        font-weight: 800; font-size: 13px; color: #dbeafe;
+      }
+      .step-num::before { content: counter(step); }
+      .step-item h5 { margin: 0 0 3px; font-size: 14.5px; color: #f8fafc; }
+      .step-item p { margin: 0; color: var(--muted); font-size: 13.5px; line-height: 1.6; }
+
       .cta-band {
         background: linear-gradient(135deg, rgba(6,182,212,.12), rgba(37,99,235,.12));
         border: 1px solid rgba(96,165,250,.18); border-radius: 28px; padding: 36px 26px; display: flex; align-items: center; justify-content: space-between; gap: 18px;
@@ -467,6 +498,120 @@
         }
       }
 
+      /* ===== Tema claro (seções institucionais) ===== */
+      .topbar {
+        background: rgba(255, 255, 255, 0.86);
+        border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+      }
+      .topbar-inner .brand strong { color: var(--text-on-light); }
+      .nav a { color: #334155; }
+      .nav a:hover { background: rgba(37, 99, 235, 0.06); border-color: rgba(37, 99, 235, 0.14); color: #1d4ed8; }
+      .btn-outline.hamb { color: var(--text-on-light); border-color: rgba(15, 23, 42, 0.14); background: rgba(15,23,42,.03); }
+      .mobile-menu { background: #ffffff; border-top: 1px solid rgba(15, 23, 42, 0.08); }
+      .mobile-menu a { color: #334155; }
+      .mobile-menu a:hover { background: rgba(37, 99, 235, 0.06); color: #1d4ed8; }
+
+      section.light {
+        background: linear-gradient(180deg, var(--bg-light-1) 0%, var(--bg-light-2) 100%);
+        color: var(--text-on-light);
+      }
+      section.light .pill {
+        color: #1d4ed8;
+        background: rgba(37, 99, 235, 0.08);
+        border-color: rgba(37, 99, 235, 0.18);
+      }
+      section.light .section-title { color: var(--text-on-light); }
+      section.light .section-desc { color: var(--muted-on-light); }
+
+      section.light .panel {
+        background: var(--card-on-light);
+        border-color: var(--border-on-light);
+        box-shadow: var(--shadow-on-light);
+      }
+      section.light .panel::before { display: none; }
+      section.light .panel h3 { color: var(--text-on-light); }
+      section.light .panel p { color: var(--muted-on-light); }
+
+      section.light .card {
+        background: var(--card-on-light);
+        border-color: var(--border-on-light);
+        box-shadow: 0 14px 32px rgba(15, 23, 42, 0.06);
+      }
+      section.light .card:hover { border-color: rgba(37, 99, 235, 0.28); box-shadow: 0 20px 40px rgba(15, 23, 42, 0.1); }
+      section.light .card h4 { color: var(--text-on-light); }
+      section.light .card p { color: var(--muted-on-light); }
+      section.light .card::after { background: radial-gradient(circle, rgba(37,99,235,.10), transparent 70%); }
+
+      section.light .list-item {
+        background: rgba(37, 99, 235, 0.035);
+        border-color: var(--border-on-light);
+      }
+      section.light .list-item h5 { color: var(--text-on-light); }
+      section.light .list-item p { color: var(--muted-on-light); }
+      section.light .dot { background: rgba(37, 99, 235, 0.1); border-color: rgba(37, 99, 235, 0.18); }
+
+      section.light .metric {
+        background: #ffffff;
+        border-color: var(--border-on-light);
+        box-shadow: 0 12px 28px rgba(15, 23, 42, 0.06);
+      }
+      section.light .metric strong { color: var(--text-on-light); }
+      section.light .metric span { color: var(--muted-on-light); }
+
+      section.light .hero-badges span {
+        background: #ffffff;
+        border-color: var(--border-on-light);
+        color: #1d4ed8;
+      }
+
+      section.light.hero {
+        background:
+          radial-gradient(900px 420px at 12% 0%, rgba(6, 182, 212, 0.10), transparent 65%),
+          radial-gradient(900px 480px at 88% 6%, rgba(59, 130, 246, 0.12), transparent 60%),
+          linear-gradient(180deg, #ffffff 0%, #f3f7fc 55%, #eef3fb 100%);
+        color: var(--text-on-light);
+      }
+      section.light.hero::before { display: none; }
+      section.light.hero::after { background: linear-gradient(180deg, transparent, rgba(238, 243, 251, 0.9)); }
+      section.light.hero p { color: var(--muted-on-light); }
+      section.light.hero .sub { color: var(--muted2-on-light); }
+      section.light .scroll-down { background: #ffffff; border-color: var(--border-on-light); box-shadow: 0 14px 30px rgba(15,23,42,.08); color: #1d4ed8; }
+
+      section.light .cta-band {
+        background: linear-gradient(135deg, rgba(6, 182, 212, 0.08), rgba(37, 99, 235, 0.08));
+        border-color: rgba(37, 99, 235, 0.16);
+        box-shadow: 0 16px 40px rgba(15, 23, 42, 0.07);
+      }
+      section.light .cta-band h3 { color: var(--text-on-light); }
+      section.light .cta-band p { color: var(--muted-on-light); }
+
+      section.light .contact-card {
+        background: var(--card-on-light);
+        border-color: var(--border-on-light);
+        box-shadow: var(--shadow-on-light);
+      }
+      section.light .contact-card h3 { color: var(--text-on-light); }
+      section.light .info-item { border-bottom-color: rgba(15, 23, 42, 0.08); }
+      section.light .info-item b { color: var(--text-on-light); }
+      section.light .info-item span { color: var(--muted-on-light); }
+      section.light label { color: #334155; }
+      section.light input,
+      section.light textarea {
+        background: #ffffff;
+        border-color: rgba(15, 23, 42, 0.14);
+        color: var(--text-on-light);
+      }
+      section.light input::placeholder,
+      section.light textarea::placeholder { color: #94a3b8; }
+      section.light input:focus,
+      section.light textarea:focus { border-color: rgba(37, 99, 235, 0.55); box-shadow: 0 0 0 4px var(--ring-on-light); }
+
+      section.light .security-img {
+        background:
+          linear-gradient(135deg, rgba(6, 182, 212, 0.14), rgba(37, 99, 235, 0.10)),
+          url("assets/security.jpg") center/cover no-repeat,
+          url("assets/security.svg") center/cover no-repeat;
+      }
     </style>
 
     <!-- Google tag (gtag.js) -->
@@ -500,9 +645,10 @@
           <a href="#sobre">Sobre</a>
           <a href="#funcionalidades">Funcionalidades</a>
           <a href="#insumos">Insumos</a>
+          <a href="#transporte-amostras">Amostras</a>
           <a href="#seguranca">Segurança</a>
           <a href="#modulos">Módulos</a>
-          <a href="#cro">CRO &amp; Monitores</a>
+          <a href="#cro">Patrocinadores</a>
           <a href="#para-quem-e">Para quem é</a>
           <a class="btn btn-primary" href="#contato">Contato</a>
         </nav>
@@ -523,9 +669,10 @@
         <a href="#sobre">Sobre</a>
         <a href="#funcionalidades">Funcionalidades</a>
         <a href="#insumos">Insumos</a>
+        <a href="#transporte-amostras">Amostras</a>
         <a href="#seguranca">Segurança</a>
         <a href="#modulos">Módulos</a>
-        <a href="#cro">CRO &amp; Monitores</a>
+        <a href="#cro">Patrocinadores</a>
         <a href="#para-quem-e">Para quem é</a>
         <div class="cta">
           <a class="btn btn-primary" href="#contato" style="width: 100%">Contato</a>
@@ -535,7 +682,7 @@
 
     <main id="conteudo">
       <!-- Hero -->
-      <section class="hero" id="home" style="max-width: none; padding: 0">
+      <section class="hero light" id="home" style="max-width: none; padding: 0">
         <div class="hero-inner">
           <!-- H1 otimizado para ranqueamento -->
           <h1>A plataforma que conecta gestão clínica, insumos, pendências e financeiro em estudos clínicos</h1>
@@ -550,7 +697,8 @@
           <div class="hero-badges" aria-label="Principais diferenciais">
             <span>⚡ Operação clínica, insumos e financeiro conectados</span>
             <span>🔎 Pendências, estoque e rastreabilidade no mesmo fluxo</span>
-            <span>📈 Visão executiva para crescer com escala</span>
+            <span>🏢 Cockpit financeiro para patrocinadores e indústria</span>
+            <span>🧪 Transporte de amostras com cadeia de frio</span>
           </div>
 
           <div class="hero-actions">
@@ -582,7 +730,7 @@
       </section>
 
       <!-- Sobre -->
-      <section id="sobre">
+      <section id="sobre" class="light">
         <div style="text-align: left">
           <span class="pill">Sobre nós</span>
           <h2 class="section-title">Uma plataforma pensada para a operação real da pesquisa clínica</h2>
@@ -615,7 +763,7 @@
       </section>
 
       <!-- Participante -->
-      <section id="participante" style="text-align: center">
+      <section id="participante" class="light" style="text-align: center">
         <span class="pill">Participante</span>
         <h2 class="section-title">Experiência do participante com mais adesão e menos atrito</h2>
         <p class="section-desc">
@@ -815,6 +963,86 @@
         </div>
       </section>
 
+      <!-- Transporte de amostras -->
+      <section id="transporte-amostras" style="text-align: center">
+        <span class="pill">Logística de amostras</span>
+        <h2 class="section-title">Transporte de amostras com cadeia de frio e rastreabilidade ponta a ponta</h2>
+        <p class="section-desc">
+          Da coleta à entrega no laboratório, acompanhe cada remessa biológica com status controlado, temperatura monitorada e cadastros padronizados — sem planilhas paralelas para courier, lacre ou validade.
+        </p>
+
+        <div class="grid-2" style="text-align: left">
+          <div class="panel pad">
+            <h3 style="margin-top: 0">Da coleta à entrega, com status sob controle</h3>
+            <p>
+              Vincule coletas a remessas e acompanhe a movimentação por uma máquina de status dedicada: prevista, coletada, aguardando retirada, agendada, retirada, em trânsito, recebida, rejeitada ou cancelada.
+            </p>
+            <p style="margin-bottom: 0">
+              Cada transição é registrada com responsável, data/hora e justificativa, dando à equipe clínica e ao patrocinador visibilidade real sobre onde a amostra está e o que falta para concluir o transporte.
+            </p>
+          </div>
+
+          <div class="panel">
+            <div class="list">
+              <div class="list-item">
+                <div class="dot">🌡️</div>
+                <div>
+                  <h5>Cadeia de frio monitorada</h5>
+                  <p>Perfis de temperatura de ambiente a nitrogênio líquido, com logs por sensor, datalogger ou registro manual e faixa mín/máx por remessa.</p>
+                </div>
+              </div>
+              <div class="list-item">
+                <div class="dot">🔒</div>
+                <div>
+                  <h5>Lacre de segurança e rastreamento</h5>
+                  <p>Número de lacre, código de rastreamento e link da transportadora vinculados à remessa, com histórico completo de custódia.</p>
+                </div>
+              </div>
+              <div class="list-item">
+                <div class="dot">🗂️</div>
+                <div>
+                  <h5>Cadastros padronizados</h5>
+                  <p>Transportadoras, destinos (laboratório local, central, do patrocinador ou biobank) e tipos de amostra configurados uma vez e reutilizados por estudo.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards cards-scroll" style="margin-top: 24px">
+          <div class="card">
+            <div class="icon">📦</div>
+            <h4>Gestão de remessas</h4>
+            <p>Criação, edição e acompanhamento de remessas com 9 status controlados e histórico de cada transição.</p>
+          </div>
+          <div class="card">
+            <div class="icon">🌡️</div>
+            <h4>Cadeia de frio</h4>
+            <p>Logs de temperatura por sensor, datalogger ou manual, com validação de faixa permitida por tipo de amostra.</p>
+          </div>
+          <div class="card">
+            <div class="icon">🧪</div>
+            <h4>Coletas vinculadas</h4>
+            <p>Associe coletas biológicas à remessa com tipo de amostra, tubos e volume planejado versus coletado.</p>
+          </div>
+          <div class="card">
+            <div class="icon">🚚</div>
+            <h4>Transportadoras e destinos</h4>
+            <p>Cadastro de couriers, nível de serviço e destinos (lab local, central, patrocinador, biobank) por estudo.</p>
+          </div>
+          <div class="card">
+            <div class="icon">📋</div>
+            <h4>Requisitos por estudo e visita</h4>
+            <p>Defina tipo de amostra, tubos, volume, temperatura e destino esperado para cada visita do protocolo.</p>
+          </div>
+          <div class="card">
+            <div class="icon">📑</div>
+            <h4>Relatórios de rastreabilidade</h4>
+            <p>Exportação em PDF de remessas, cadeia de custódia, desvios e histórico de temperatura por estudo e período.</p>
+          </div>
+        </div>
+      </section>
+
       <!-- Módulos estratégicos -->
       <section id="modulos" style="text-align: center">
         <span class="pill">Operação ponta a ponta</span>
@@ -879,53 +1107,105 @@
         </div>
       </section>
 
-      <!-- CRO e Monitores -->
+      <!-- Patrocinadores / Sponsor Command Center -->
       <section id="cro" style="text-align: center">
-        <span class="pill">CRO &amp; Monitores</span>
-        <h2 class="section-title">Visão de monitoramento e auditoria para CROs e patrocinadores</h2>
+        <span class="pill">Patrocinadores, CRO &amp; Indústria</span>
+        <h2 class="section-title">Sponsor Command Center: o cockpit executivo do seu estudo</h2>
         <p class="section-desc">
-          A plataforma oferece perfis dedicados para monitores, gestores de patrocinador e auditores acompanharem a execução dos estudos com visibilidade real, rastreabilidade e acesso estruturado a dados clínicos, financeiros e documentais — sem depender de relatórios manuais do centro.
+          Um cockpit consolidado com a saúde financeira, operacional e de risco dos estudos e centros participantes — para patrocinador, CRO e indústria acompanharem a execução sem depender de relatório manual do centro.
         </p>
 
-        <div class="grid-2" style="text-align: left">
+        <div class="hero-metrics" aria-label="Resumo financeiro do Command Center (exemplo ilustrativo)" style="margin-top: 28px">
+          <div class="metric">
+            <strong>Budget aprovado</strong>
+            <span>Envelope financeiro ativo, consolidado por estudo e por centro.</span>
+          </div>
+          <div class="metric">
+            <strong>Provisionado</strong>
+            <span>Valores comprometidos e ainda não liquidados, com % de consumo do envelope.</span>
+          </div>
+          <div class="metric">
+            <strong>Pago</strong>
+            <span>Realizado financeiro do estudo, atualizado conforme a liberação de lançamentos.</span>
+          </div>
+          <div class="metric">
+            <strong>Saldo disponível</strong>
+            <span>Budget menos provisionado e pago — com alerta automático se o centro ultrapassar o orçamento.</span>
+          </div>
+        </div>
+
+        <div class="grid-2" style="text-align: left; margin-top: 26px">
           <div class="panel pad">
-            <h3 style="margin-top: 0">Monitoramento em tempo real, sem intermediários</h3>
+            <h3 style="margin-top: 0">9 KPIs de metas e ativação por centro</h3>
             <p>
-              Monitores e gestores de CRO acessam diretamente o status de execução do estudo, o andamento das visitas, os termos aceitos pelos participantes e as pendências abertas — com dados atualizados e rastreáveis.
+              Meta e realizado de recrutamento e randomização, conversão triagem → randomização, ativação de centros no prazo, atraso médio de ativação, orçamento planejado, custo real por participante e variação planejado × realizado — tudo comparável entre centros, com ranking de melhores e piores performances.
             </p>
             <p style="margin-bottom: 0">
-              O acesso é controlado por perfil, garantindo que cada usuário visualize apenas o que é pertinente à sua função, sem expor informações além do necessário para a sua atuação.
+              Cada centro recebe um status de risco (no prazo, atenção, em risco, crítico ou acima do budget), calculado automaticamente a partir do consumo financeiro e da meta de participantes.
             </p>
           </div>
 
-          <div class="panel">
-            <div class="list">
-              <div class="list-item">
-                <div class="dot">🔭</div>
-                <div>
-                  <h5>Visão consolidada de estudos e sites</h5>
-                  <p>Acompanhe múltiplos estudos, estabelecimentos e participantes com filtros por status, visita e pendências em aberto.</p>
-                </div>
+          <div class="panel pad">
+            <h3 style="margin-top: 0">Ações que exigem atenção</h3>
+            <p style="margin-bottom: 14px">
+              Alertas automáticos apontam exatamente onde agir, com severidade e impacto financeiro estimado — sem precisar caçar o problema em planilhas.
+            </p>
+            <div class="list" style="padding: 0; gap: 10px">
+              <div class="list-item" style="align-items: center">
+                <span class="severity-badge severity-critical">Crítico</span>
+                <p style="margin:0">Centro acima do budget aprovado para o estudo.</p>
               </div>
-              <div class="list-item">
-                <div class="dot">📋</div>
-                <div>
-                  <h5>Trilha de auditoria com exportação em PDF</h5>
-                  <p>Relatório completo de ações por participante e estudo, exportável para inspeções e auditorias regulatórias.</p>
-                </div>
+              <div class="list-item" style="align-items: center">
+                <span class="severity-badge severity-high">Alto</span>
+                <p style="margin:0">Consumo financeiro acima de 90% do envelope do centro.</p>
               </div>
-              <div class="list-item">
-                <div class="dot">💰</div>
-                <div>
-                  <h5>Visibilidade financeira do estudo</h5>
-                  <p>Gestores de patrocinador acessam orçamento, lançamentos e status financeiro com controle por perfil dedicado.</p>
-                </div>
+              <div class="list-item" style="align-items: center">
+                <span class="severity-badge severity-medium">Médio</span>
+                <p style="margin:0">Meta de participantes ultrapassada sem revisão de envelope.</p>
               </div>
             </div>
           </div>
         </div>
 
         <div class="cards cards-scroll" style="margin-top: 24px">
+          <div class="card">
+            <div class="icon">💰</div>
+            <h4>Cockpit financeiro</h4>
+            <p>Budget aprovado, provisionado, pago e saldo disponível, consolidados por estudo e por centro.</p>
+          </div>
+          <div class="card">
+            <div class="icon">🎯</div>
+            <h4>KPIs de metas e ativação</h4>
+            <p>Recrutamento, randomização, conversão, ativação no prazo e variação planejado × realizado por centro.</p>
+          </div>
+          <div class="card">
+            <div class="icon">🏆</div>
+            <h4>Ranking de centros</h4>
+            <p>Top e bottom performances com % da meta, distribuição de consumo e comparação entre centros.</p>
+          </div>
+          <div class="card">
+            <div class="icon">🚨</div>
+            <h4>Alertas automáticos de risco</h4>
+            <p>Ações que exigem atenção com severidade e impacto financeiro estimado, calculadas em tempo real.</p>
+          </div>
+          <div class="card">
+            <div class="icon">📑</div>
+            <h4>Relatório de orçamento exportável</h4>
+            <p>Consolidado de previsto versus realizado por centro e ano, exportável em CSV para análise externa.</p>
+          </div>
+          <div class="card">
+            <div class="icon">🔐</div>
+            <h4>Acesso por perfil e por tenant</h4>
+            <p>Cada patrocinador, CRO ou indústria vê apenas os estudos e centros sob sua responsabilidade.</p>
+          </div>
+        </div>
+
+        <p class="section-desc" style="margin-top: 22px; font-size: 13.5px">
+          Valores e indicadores acima são ilustrativos. Veja também como <a href="#orcamentos" style="color: #67e8f9; text-decoration: underline;">enviar orçamentos por link seguro</a> para os centros direto do Command Center.
+        </p>
+
+        <h3 style="margin: 46px 0 18px; font-size: 22px; color: #f8fafc;">Perfis de acesso dedicados</h3>
+        <div class="cards cards-scroll">
           <div class="card">
             <div class="icon">👁️</div>
             <h4>Monitor CRO</h4>
@@ -959,8 +1239,112 @@
         </div>
       </section>
 
+      <!-- Orçamentos via link -->
+      <section id="orcamentos" style="text-align: center">
+        <span class="pill">Orçamentos &amp; Negociação</span>
+        <h2 class="section-title">Envie orçamentos por link seguro e receba resposta sem burocracia</h2>
+        <p class="section-desc">
+          Crie a negociação, defina o envelope por centro e envie um convite por e-mail com link individual. O centro responde direto pelo link — sem precisar de login — e tudo fica registrado e auditável.
+        </p>
+
+        <div class="grid-2" style="text-align: left">
+          <div class="panel pad">
+            <h3 style="margin-top: 0">Como funciona</h3>
+            <div class="step-list">
+              <div class="step-item">
+                <div class="step-num"></div>
+                <div>
+                  <h5>Crie a negociação</h5>
+                  <p>Defina estudo, envelope orçamentário e selecione os centros que devem responder.</p>
+                </div>
+              </div>
+              <div class="step-item">
+                <div class="step-num"></div>
+                <div>
+                  <h5>Envie o convite por link</h5>
+                  <p>Um e-mail com link individual é enviado ao contato do centro, com validade configurável de 1 a 60 dias.</p>
+                </div>
+              </div>
+              <div class="step-item">
+                <div class="step-num"></div>
+                <div>
+                  <h5>O centro responde sem login</h5>
+                  <p>Pelo link, o centro aceita a proposta, solicita ajuste de valor ou recusa — com justificativa.</p>
+                </div>
+              </div>
+              <div class="step-item">
+                <div class="step-num"></div>
+                <div>
+                  <h5>Acompanhe e consolide</h5>
+                  <p>Status, histórico de acesso e auditoria completa ficam disponíveis para aprovação e consolidação multi-centro.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="list">
+              <div class="list-item">
+                <div class="dot">🔑</div>
+                <div>
+                  <h5>Link individual e criptografado</h5>
+                  <p>Token de uso único gerado de forma segura; apenas o hash é armazenado, nunca o link em si.</p>
+                </div>
+              </div>
+              <div class="list-item">
+                <div class="dot">⏳</div>
+                <div>
+                  <h5>Expiração e revogação</h5>
+                  <p>Validade configurável de 1 a 60 dias, com revogação manual a qualquer momento pelo patrocinador.</p>
+                </div>
+              </div>
+              <div class="list-item">
+                <div class="dot">👣</div>
+                <div>
+                  <h5>Rastreamento de acesso</h5>
+                  <p>Abertura, IP, navegador e data da resposta registrados — cada link só pode ser respondido uma única vez.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards cards-scroll" style="margin-top: 24px">
+          <div class="card">
+            <div class="icon">📧</div>
+            <h4>Convite por link</h4>
+            <p>Envio por e-mail com link individual, sem necessidade de cadastro ou login pelo centro.</p>
+          </div>
+          <div class="card">
+            <div class="icon">✅</div>
+            <h4>Aceitar, ajustar ou recusar</h4>
+            <p>Três tipos de resposta com valor proposto e justificativa, registrados de forma imutável.</p>
+          </div>
+          <div class="card">
+            <div class="icon">📎</div>
+            <h4>Anexos da proposta</h4>
+            <p>Documentos de apoio disponíveis para download direto na tela pública de resposta.</p>
+          </div>
+          <div class="card">
+            <div class="icon">🧾</div>
+            <h4>Auditoria completa</h4>
+            <p>Cada envio, abertura, resposta e revogação fica registrado com data, hora e responsável.</p>
+          </div>
+          <div class="card">
+            <div class="icon">🏥</div>
+            <h4>Consolidação multi-centro</h4>
+            <p>Acompanhe a resposta de todos os centros do estudo em um único painel de consolidação.</p>
+          </div>
+          <div class="card">
+            <div class="icon">📑</div>
+            <h4>Relatório exportável</h4>
+            <p>Histórico de rodadas e valores negociados disponível para exportação e prestação de contas.</p>
+          </div>
+        </div>
+      </section>
+
       <!-- Segurança -->
-      <section id="seguranca" style="text-align: center">
+      <section id="seguranca" class="light" style="text-align: center">
         <span class="pill">Segurança e conformidade</span>
         <h2 class="section-title">Segurança, auditoria e conformidade desde a base</h2>
         <p class="section-desc">
@@ -1011,7 +1395,7 @@
       </section>
 
       <!-- Para quem é -->
-      <section id="para-quem-e" style="text-align: center">
+      <section id="para-quem-e" class="light" style="text-align: center">
         <span class="pill">Para quem é</span>
         <h2 class="section-title">Feita para quem precisa operar, controlar e evoluir</h2>
         <p class="section-desc">
@@ -1037,8 +1421,8 @@
 
           <div class="card">
             <div class="icon">🧑‍⚕️</div>
-            <h4>CROs e monitores</h4>
-            <p>Perfis dedicados para monitoramento, auditoria, visibilidade financeira e acompanhamento de execução do protocolo em tempo real. <a href="#cro" style="color: #67e8f9; text-decoration: underline;">Ver módulo CRO</a></p>
+            <h4>Patrocinadores, CRO e indústria</h4>
+            <p>Sponsor Command Center com visão financeira, KPIs de metas, alertas de risco e orçamentos por link, sem depender de relatório manual do centro. <a href="#cro" style="color: #1d4ed8; text-decoration: underline;">Ver Sponsor Command Center</a></p>
           </div>
 
           <div class="card">
@@ -1052,7 +1436,7 @@
       </section>
 
       <!-- CTA -->
-      <section style="padding-top: 0">
+      <section class="light" style="padding-top: 0">
         <div class="cta-band">
           <div>
             <h3>Pronto para substituir controles dispersos por uma gestão mais inteligente?</h3>
@@ -1065,7 +1449,7 @@
       </section>
 
       <!-- Contato -->
-      <section id="contato" style="text-align: center">
+      <section id="contato" class="light" style="text-align: center">
         <span class="pill">Contato</span>
         <h2 class="section-title">Converse com a nossa equipe</h2>
         <p class="section-desc">
@@ -1184,9 +1568,11 @@
           <a href="#sobre">Sobre</a>
           <a href="#funcionalidades">Funcionalidades</a>
           <a href="#insumos">Insumos</a>
+          <a href="#transporte-amostras">Amostras</a>
           <a href="#seguranca">Segurança</a>
           <a href="#modulos">Módulos</a>
-          <a href="#cro">CRO &amp; Monitores</a>
+          <a href="#cro">Patrocinadores</a>
+          <a href="#orcamentos">Orçamentos</a>
           <a href="#contato">Contato</a>
         </div>
 
