@@ -138,9 +138,16 @@
       }
 
       * { box-sizing: border-box; }
-      html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+      html {
+        width: 100%;
+        scroll-behavior: smooth;
+        scroll-padding-top: 96px;
+        overflow-x: hidden;
+        overflow-x: clip;
+      }
       body {
         margin: 0;
+        min-width: 0;
         font-family: var(--font-body);
         color: var(--ink-text);
         background: var(--navy-950);
@@ -148,7 +155,8 @@
         overflow-x: hidden;
       }
       a { color: inherit; text-decoration: none; }
-      img { max-width: 100%; display: block; }
+      img, svg, video { max-width: 100%; display: block; }
+      button, input, textarea, select { min-width: 0; }
 
       ::selection { background: rgba(62, 208, 220, 0.35); color: #fff; }
 
@@ -166,7 +174,7 @@
         .reveal { opacity: 1 !important; transform: none !important; }
       }
 
-      .container { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+      .container { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 24px; }
 
       /* ============ Barra de anúncio ============ */
       .announce {
@@ -206,34 +214,68 @@
         padding: 9px 12px; border-radius: 10px; transition: color .15s ease, background .15s ease;
       }
       .nav a:hover { color: #fff; background: rgba(127, 178, 232, 0.10); }
+      .nav a.is-active { color: #fff; background: rgba(62, 208, 220, .12); }
       .nav a.is-new::after {
         content: "novo"; font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: .06em;
         color: #33230A; background: var(--amber-500); border-radius: 999px; padding: 2px 6px; margin-left: 6px; vertical-align: 2px;
       }
 
       .btn {
+        position: relative; overflow: hidden;
         display: inline-flex; align-items: center; justify-content: center; gap: 10px;
         padding: 13px 22px; border-radius: 14px; font-weight: 700; font-size: 14px;
         font-family: var(--font-body); border: 1px solid transparent; cursor: pointer;
         transition: transform .14s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease;
-        white-space: nowrap; user-select: none;
+        max-width: 100%; white-space: nowrap; user-select: none;
       }
       .btn:active { transform: translateY(1px); }
       .btn-primary { background: var(--grad-cta); color: #fff; box-shadow: var(--shadow-btn); }
+      .btn-primary::before {
+        content: ""; position: absolute; inset: -40% auto -40% -35%; width: 24%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,.42), transparent);
+        transform: translateX(-260%) skewX(-18deg); animation: buttonShine 4.8s ease-in-out infinite;
+        pointer-events: none;
+      }
       .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 20px 46px rgba(46, 134, 193, .5); }
       .btn-ghost {
         background: rgba(127, 178, 232, 0.06); border-color: var(--ink-border); color: var(--ink-text);
       }
       .btn-ghost:hover { border-color: var(--ink-border-strong); background: rgba(127, 178, 232, 0.12); }
 
-      .hamb { display: none; }
-      .mobile-menu {
-        display: none; padding: 10px 24px 20px;
-        background: rgba(4, 18, 48, 0.97); border-top: 1px solid var(--ink-border);
+      @keyframes buttonShine {
+        0%, 62% { transform: translateX(-260%) skewX(-18deg); }
+        82%, 100% { transform: translateX(720%) skewX(-18deg); }
       }
-      .mobile-menu.is-open { display: block; }
+
+      .hamb { display: none; }
+      .menu-icon { position: relative; width: 18px; height: 14px; flex: 0 0 auto; }
+      .menu-icon::before,
+      .menu-icon::after,
+      .menu-icon span {
+        content: ""; position: absolute; left: 0; width: 18px; height: 2px;
+        border-radius: 999px; background: currentColor; transition: transform .25s ease, opacity .2s ease, top .25s ease;
+      }
+      .menu-icon::before { top: 0; }
+      .menu-icon span { top: 6px; }
+      .menu-icon::after { top: 12px; }
+      .hamb[aria-expanded="true"] .menu-icon::before { top: 6px; transform: rotate(45deg); }
+      .hamb[aria-expanded="true"] .menu-icon span { opacity: 0; transform: scaleX(.2); }
+      .hamb[aria-expanded="true"] .menu-icon::after { top: 6px; transform: rotate(-45deg); }
+      .mobile-menu {
+        position: absolute; top: 100%; left: 0; right: 0;
+        max-height: 0; padding: 0 24px; overflow: hidden;
+        opacity: 0; visibility: hidden; transform: translateY(-10px);
+        background: rgba(4, 18, 48, 0.98); border-top: 1px solid transparent;
+        box-shadow: 0 24px 52px rgba(2, 10, 28, .55);
+        transition: max-height .35s ease, padding .35s ease, opacity .25s ease, transform .35s ease, visibility .35s;
+      }
+      .mobile-menu.is-open {
+        max-height: calc(100dvh - 72px); padding: 10px 24px 20px; overflow-y: auto;
+        opacity: 1; visibility: visible; transform: none; border-top-color: var(--ink-border);
+      }
       .mobile-menu a { display: block; padding: 13px 10px; border-radius: 10px; color: var(--ink-muted); font-weight: 500; }
       .mobile-menu a:hover { background: rgba(127, 178, 232, 0.08); color: #fff; }
+      .mobile-menu a.is-active { color: #fff; background: rgba(62, 208, 220, .1); }
 
       /* ============ Hero ============ */
       .hero {
@@ -242,6 +284,25 @@
           radial-gradient(1100px 560px at 82% -10%, rgba(46, 134, 193, 0.28), transparent 62%),
           radial-gradient(900px 480px at 8% 12%, rgba(62, 208, 220, 0.12), transparent 58%),
           linear-gradient(175deg, var(--navy-900) 0%, var(--navy-950) 68%);
+      }
+      .hero::after {
+        content: ""; position: absolute; width: min(62vw, 760px); aspect-ratio: 1; right: -24%; top: 8%;
+        border-radius: 50%; pointer-events: none; opacity: .34; filter: blur(8px);
+        background: radial-gradient(circle, rgba(62, 208, 220, .22), rgba(46, 134, 193, .08) 42%, transparent 70%);
+        animation: heroGlow 10s ease-in-out infinite alternate;
+      }
+      .hero-visuals { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+      .hero-orb {
+        position: absolute; border: 1px solid rgba(127, 178, 232, .18); border-radius: 50%;
+        background: linear-gradient(145deg, rgba(62, 208, 220, .1), rgba(46, 134, 193, .02));
+        box-shadow: inset 0 0 32px rgba(62, 208, 220, .08), 0 0 34px rgba(46, 134, 193, .08);
+      }
+      .hero-orb.one { width: 118px; height: 118px; left: 5%; top: 18%; animation: orbFloat 9s ease-in-out infinite; }
+      .hero-orb.two { width: 72px; height: 72px; right: 9%; top: 42%; animation: orbFloat 7s ease-in-out -2s infinite reverse; }
+      @keyframes heroGlow { to { transform: translate(-9%, 7%) scale(1.12); opacity: .5; } }
+      @keyframes orbFloat {
+        0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+        50% { transform: translate3d(0, -24px, 0) rotate(12deg); }
       }
       .hero::before {
         content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .5;
@@ -262,6 +323,7 @@
         font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
         color: var(--cyan-400); background: rgba(62, 208, 220, 0.08);
         border: 1px solid rgba(62, 208, 220, 0.22); border-radius: 999px; padding: 9px 16px;
+        animation: heroEnter .7s .05s both cubic-bezier(.22, .7, .3, 1);
       }
       .hero-eyebrow .pulse-dot {
         width: 8px; height: 8px; border-radius: 999px; background: var(--cyan-400);
@@ -276,6 +338,7 @@
         font-family: var(--font-display); font-weight: 800;
         font-size: clamp(34px, 5.2vw, 64px); line-height: 1.06; letter-spacing: -0.03em;
         margin: 26px auto 20px; max-width: 1000px; color: #fff;
+        animation: heroEnter .85s .16s both cubic-bezier(.22, .7, .3, 1);
       }
       .hero h1 .grad {
         background: var(--grad-text);
@@ -284,8 +347,16 @@
       .hero .lead {
         margin: 0 auto; max-width: 780px;
         font-size: clamp(15.5px, 1.8vw, 18.5px); line-height: 1.75; color: var(--ink-muted);
+        animation: heroEnter .85s .28s both cubic-bezier(.22, .7, .3, 1);
       }
-      .hero-actions { margin-top: 36px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+      .hero-actions {
+        margin-top: 36px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
+        animation: heroEnter .85s .4s both cubic-bezier(.22, .7, .3, 1);
+      }
+      @keyframes heroEnter {
+        from { opacity: 0; transform: translateY(24px); }
+        to { opacity: 1; transform: none; }
+      }
 
       /* ECG — assinatura visual */
       .ecg-wrap { position: relative; margin: clamp(36px, 5vw, 56px) auto 0; max-width: 920px; height: 90px; }
@@ -352,6 +423,13 @@
         font-size: clamp(28px, 3.4vw, 46px); line-height: 1.1; letter-spacing: -0.025em;
         margin: 18px 0 14px; color: var(--paper-text);
       }
+      .section-title::after {
+        content: ""; display: block; width: 68px; height: 3px; margin-top: 16px; border-radius: 999px;
+        background: var(--grad-cta); transform: scaleX(0); transform-origin: left;
+        transition: transform .7s .18s cubic-bezier(.22, .7, .3, 1);
+      }
+      .section-title.in::after { transform: scaleX(1); }
+      .center .section-title::after { margin-left: auto; margin-right: auto; transform-origin: center; }
       .dark .section-title { color: #fff; }
       .section-desc { color: var(--paper-muted); max-width: 820px; font-size: 16px; line-height: 1.85; margin: 0; }
       .dark .section-desc { color: var(--ink-muted); }
@@ -417,6 +495,7 @@
       /* ============ Grids e cartões ============ */
       .grid-2 { display: grid; grid-template-columns: 1.1fr .9fr; gap: 28px; align-items: stretch; margin-top: 40px; }
       .grid-2.rev { grid-template-columns: .9fr 1.1fr; }
+      .grid-2 > *, .cards > *, .contact-grid > * { min-width: 0; }
 
       .panel {
         background: linear-gradient(180deg, #0D2C66 0%, #081D46 100%);
@@ -439,7 +518,8 @@
           radial-gradient(500px 260px at 20% 0%, rgba(46, 134, 193, 0.12), transparent 60%),
           linear-gradient(160deg, var(--navy-900), var(--navy-950));
       }
-      .shot img { width: 100%; height: auto; max-height: 520px; object-fit: contain; border-radius: 10px; }
+      .shot img { width: 100%; height: auto; max-height: 520px; object-fit: contain; border-radius: 10px; transition: transform .55s cubic-bezier(.22, .7, .3, 1); }
+      .panel:hover .shot img { transform: scale(1.018); }
       .shot figcaption {
         padding: 15px 18px; font-size: 13px; color: var(--paper-muted);
         border-top: 1px solid var(--paper-border); background: rgba(4, 18, 48, 0.35);
@@ -497,6 +577,7 @@
         border-radius: 16px; border: 1px solid var(--paper-border); background: rgba(18, 59, 133, 0.20);
         transition: border-color .15s ease;
       }
+      .list-item > div:last-child { min-width: 0; }
       .list-item:hover { border-color: var(--paper-border-strong); }
       .dark .list-item { border-color: var(--ink-border); background: rgba(18, 59, 133, 0.18); }
       .dark .list-item:hover { border-color: var(--ink-border-strong); }
@@ -554,6 +635,22 @@
       .flow-step b { display: block; font-family: var(--font-display); font-size: 13.5px; color: #fff; margin-bottom: 5px; letter-spacing: -0.01em; }
       .flow-step span { display: block; font-size: 11.5px; color: var(--ink-muted-2); line-height: 1.55; }
 
+      .panel.reveal .list-item,
+      .monitoria-flow.reveal .flow-step {
+        opacity: 0; transform: translateY(12px);
+        transition: opacity .5s ease, transform .5s cubic-bezier(.22, .7, .3, 1);
+      }
+      .panel.reveal.in .list-item,
+      .monitoria-flow.reveal.in .flow-step { opacity: 1; transform: none; }
+      .panel.reveal.in .list-item:nth-child(2),
+      .monitoria-flow.reveal.in .flow-step:nth-child(2) { transition-delay: .08s; }
+      .panel.reveal.in .list-item:nth-child(3),
+      .monitoria-flow.reveal.in .flow-step:nth-child(3) { transition-delay: .16s; }
+      .panel.reveal.in .list-item:nth-child(4),
+      .monitoria-flow.reveal.in .flow-step:nth-child(4) { transition-delay: .24s; }
+      .monitoria-flow.reveal.in .flow-step:nth-child(5) { transition-delay: .32s; }
+      .monitoria-flow.reveal.in .flow-step:nth-child(6) { transition-delay: .4s; }
+
       .badge-new {
         display: inline-block; background: var(--amber-500); color: #33230A;
         font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: .08em;
@@ -577,6 +674,12 @@
         mask-image: radial-gradient(ellipse at 80% 20%, black, transparent 70%);
         -webkit-mask-image: radial-gradient(ellipse at 80% 20%, black, transparent 70%);
       }
+      .cta-band::after {
+        content: ""; position: absolute; width: 240px; height: 240px; right: -100px; top: -120px;
+        border-radius: 50%; background: rgba(255,255,255,.14); filter: blur(4px);
+        animation: ctaFloat 7s ease-in-out infinite alternate; pointer-events: none;
+      }
+      @keyframes ctaFloat { to { transform: translate(-54px, 48px) scale(1.18); opacity: .45; } }
       .cta-band > div { position: relative; z-index: 1; }
       .cta-band h3 { font-family: var(--font-display); margin: 0 0 8px; font-size: clamp(21px, 2.4vw, 28px); letter-spacing: -0.02em; color: #fff; }
       .cta-band p { margin: 0; color: rgba(234, 242, 251, 0.82); line-height: 1.75; max-width: 640px; font-size: 15px; }
@@ -598,6 +701,7 @@
       .info-item:last-of-type { border-bottom: none; }
       .info-item b { display: block; font-size: 13.5px; color: var(--paper-text); margin-bottom: 2px; }
       .info-item span { color: var(--paper-muted); font-size: 13.5px; }
+      .info-item span, .footer-col a { overflow-wrap: anywhere; }
 
       form { display: grid; gap: 13px; }
       label { font-size: 12.5px; font-weight: 700; color: var(--paper-text); letter-spacing: .01em; }
@@ -679,26 +783,74 @@
         .footer-inner { grid-template-columns: 1fr 1fr; }
       }
       @media (max-width: 640px) {
+        html { scroll-padding-top: 78px; }
         .container { padding: 0 16px; }
         .topbar-inner { padding: 8px 16px; min-height: 66px; }
         .brand img { width: 68px; height: 58px; }
         .brand strong { display: none; }
+        .hamb { min-height: 44px; padding: 10px 14px; }
+        .mobile-menu { padding-left: 16px; padding-right: 16px; }
+        .mobile-menu.is-open { padding: 8px 16px 18px; }
+        .mobile-menu a { min-height: 46px; padding: 13px 12px; }
+        .mobile-menu .btn { min-height: 48px; }
+        .section-pad { padding: 58px 0; }
+        .section-title { font-size: clamp(26px, 8vw, 34px); line-height: 1.16; letter-spacing: -.02em; }
+        .section-desc { font-size: 15px; line-height: 1.7; }
+        .eyebrow { max-width: 100%; line-height: 1.45; letter-spacing: .12em; }
         .cards, .cards.c3, .cards.c5 { grid-template-columns: 1fr; gap: 14px; }
         .hero-metrics { grid-template-columns: 1fr; }
-        .monitoria-flow { grid-template-columns: repeat(2, 1fr); }
+        .hero-inner { padding: 44px 16px 58px; }
+        .hero-eyebrow { max-width: 100%; padding: 8px 13px; font-size: 10.5px; line-height: 1.45; letter-spacing: .1em; }
+        .hero h1 { margin: 22px auto 16px; font-size: clamp(30px, 10vw, 42px); line-height: 1.11; }
+        .hero h1 br { display: none; }
+        .hero .lead { font-size: 15.5px; line-height: 1.65; }
+        .hero-actions { margin-top: 28px; gap: 10px; }
+        .hero-actions .btn { width: 100%; min-height: 50px; white-space: normal; line-height: 1.35; }
+        .hero-orb.one { width: 78px; height: 78px; left: -22px; top: 10%; }
+        .hero-orb.two { width: 54px; height: 54px; right: -18px; top: 34%; }
+        .hero::after { width: 110vw; right: -72%; top: 20%; opacity: .24; }
+        .metric { padding: 19px 18px; }
+        .metric strong { font-size: 27px; }
+        .grid-2, .contact-grid { gap: 18px; margin-top: 28px; }
+        .cards { margin-top: 28px; }
+        .card { padding: 20px; }
+        .panel.pad { padding: 21px 19px; }
+        .list { padding: 14px; gap: 10px; }
+        .list-item { padding: 14px; }
+        .monitoria-flow { grid-template-columns: 1fr; margin-top: 30px; }
         .flow-step::after { display: none; }
-        .flow-step { border-bottom: 1px solid var(--ink-border); }
-        .flow-step:nth-last-child(-n+2) { border-bottom: none; }
+        .flow-step { display: grid; grid-template-columns: 36px 1fr; column-gap: 12px; padding: 17px 16px; text-align: left; border-right: none; border-bottom: 1px solid var(--ink-border); }
+        .flow-step:last-child, .flow-step:nth-last-child(-n+2):not(:last-child) { border-bottom: 1px solid var(--ink-border); }
+        .flow-step:last-child { border-bottom: none; }
+        .flow-ico { grid-row: 1 / span 2; margin: 0; align-self: center; text-align: center; }
+        .flow-step b { margin-bottom: 3px; }
         .ecg-wrap { height: 64px; }
-        .hero-actions .btn { width: 100%; }
-        .panel.pad { padding: 22px; }
-        .announce { font-size: 12px; }
+        .ecg-wrap::before, .ecg-wrap::after { width: 52px; }
+        .slant { height: 42px; }
+        .cta-band { padding: 32px 22px; border-radius: 24px; }
+        .cta-band .btn-white { width: 100%; white-space: normal; min-height: 48px; }
+        .contact-card { padding: 21px 18px; }
+        .contact-card img { height: 180px !important; }
+        .info-item > div:last-child { min-width: 0; }
+        input, textarea { font-size: 16px; }
+        .footer-inner { grid-template-columns: 1fr; padding: 44px 16px 34px; gap: 30px; }
+        .footer-col p { max-width: none; }
+        .announce { padding: 10px 14px; font-size: 11.5px; line-height: 1.55; }
+        .announce .tag { margin-right: 5px; }
+        .announce a { display: inline-block; white-space: normal; }
         /* Efeitos ajustados para telas pequenas */
-        .cards .reveal, .monitoria-flow.reveal { transform: translateX(-24px); }
-        .cards .reveal:nth-child(even) { transform: translateX(24px); }
-        .grid-2 > .reveal:first-child { transform: translateX(-28px); }
-        .grid-2 > .reveal:last-child { transform: translateX(28px); }
+        .cards .reveal, .cards .reveal:nth-child(even), .monitoria-flow.reveal,
+        .grid-2 > .reveal:first-child, .grid-2 > .reveal:last-child { transform: translateY(22px); }
         #funcionalidades::before, #funcionalidades::after { opacity: 0.35; filter: blur(56px); }
+      }
+      @media (max-width: 380px) {
+        .container, .hero-inner { padding-left: 14px; padding-right: 14px; }
+        .hero h1 { font-size: 29px; }
+        .hero-eyebrow .pulse-dot { display: none; }
+        .btn { padding-left: 16px; padding-right: 16px; }
+        .list-item { gap: 10px; }
+        .dot { width: 34px; height: 34px; border-radius: 10px; }
+        .severity-badge { padding-left: 8px; padding-right: 8px; }
       }
     </style>
 
@@ -727,7 +879,7 @@
     <!-- Topbar -->
     <header class="topbar">
       <div class="topbar-inner">
-        <a class="brand" href="#home" aria-label="Healthuture Solutions - Início">
+        <a class="brand" href="#home" aria-label="Healthuture Solutions, Início">
           <img
             src="assets/logo.png"
             alt="Logo Healthuture Solutions"
@@ -756,11 +908,12 @@
           aria-controls="mobileMenu"
           type="button"
         >
-          Menu
+          <span class="hamb-label">Menu</span>
+          <span class="menu-icon" aria-hidden="true"><span></span></span>
         </button>
       </div>
 
-      <div class="mobile-menu" id="mobileMenu">
+      <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
         <a href="#sobre">Sobre</a>
         <a href="#monitoria">Monitoria</a>
         <a href="#funcionalidades">Funcionalidades</a>
@@ -782,6 +935,10 @@
     <main id="conteudo">
       <!-- ================= HERO ================= -->
       <section class="hero" id="home">
+        <div class="hero-visuals" aria-hidden="true">
+          <span class="hero-orb one"></span>
+          <span class="hero-orb two"></span>
+        </div>
         <div class="hero-inner">
           <span class="hero-eyebrow"><span class="pulse-dot" aria-hidden="true"></span> Plataforma de gestão de pesquisa clínica</span>
 
@@ -791,7 +948,7 @@
           </h1>
 
           <p class="lead">
-            Gestão clínica, monitoria, insumos, amostras, pendências e financeiro em um só ambiente — sem planilhas dispersas, sem controles paralelos, com rastreabilidade de ponta a ponta.
+            Gestão clínica, monitoria, insumos, amostras, pendências e financeiro em um só ambiente, sem planilhas dispersas ou controles paralelos e com rastreabilidade de ponta a ponta.
           </p>
 
           <div class="hero-actions">
@@ -889,7 +1046,7 @@
           <span class="eyebrow amber reveal">Lançamento · Gestão de Monitoria</span>
           <h2 class="section-title reveal">Monitoria clínica do agendamento ao relatório</h2>
           <p class="section-desc reveal">
-            O ciclo completo da monitoria em um só módulo: agende visitas com recorrência, execute checklists padronizados, registre achados com trilha de auditoria e entregue relatórios com SLA — tudo refletido na agenda do centro e na previsão financeira, automaticamente.
+            O ciclo completo da monitoria em um só módulo: agende visitas com recorrência, execute checklists padronizados, registre achados com trilha de auditoria e entregue relatórios com SLA. Tudo aparece automaticamente na agenda do centro e na previsão financeira.
           </p>
 
           <!-- Fluxo do ciclo de monitoria -->
@@ -940,7 +1097,7 @@
             <div class="card reveal d2">
               <div class="icon" aria-hidden="true">🚩</div>
               <h4>Central de Achados</h4>
-              <p>Controle de severidade, prazo, recorrência e status de cada achado — do registro à validação, sem e-mails soltos.</p>
+              <p>Controle de severidade, prazo, recorrência e status de cada achado, desde o registro até a validação, sem e-mails soltos.</p>
             </div>
             <div class="card reveal d3">
               <div class="icon" aria-hidden="true">✅</div>
@@ -1045,7 +1202,7 @@
             <div class="card reveal d3">
               <div class="icon" aria-hidden="true">🩺</div>
               <h4>Gestão de monitoria</h4>
-              <p>Agenda com recorrência, checklists, achados com trilha de auditoria e relatórios com SLA — integrados ao financeiro.</p>
+              <p>Agenda com recorrência, checklists, achados com trilha de auditoria e relatórios com SLA, todos integrados ao financeiro.</p>
             </div>
             <div class="card reveal">
               <div class="icon" aria-hidden="true">🧪</div>
@@ -1174,7 +1331,7 @@
           <span class="eyebrow reveal">Logística de amostras</span>
           <h2 class="section-title reveal">Transporte de amostras com cadeia de frio e rastreabilidade ponta a ponta</h2>
           <p class="section-desc reveal">
-            Da coleta à entrega no laboratório, acompanhe cada remessa biológica com status controlado, registro de temperatura e cadastros padronizados — sem planilhas paralelas para courier, lacre ou validade.
+            Da coleta à entrega no laboratório, acompanhe cada remessa biológica com status controlado, registro de temperatura e cadastros padronizados, sem planilhas paralelas para courier, lacre ou validade.
           </p>
 
           <div class="grid-2" style="text-align: left">
@@ -1256,14 +1413,14 @@
           <span class="eyebrow reveal">Qualidade e Treinamento</span>
           <h2 class="section-title reveal">Qualidade e treinamento com trilha completa, sem planilha paralela<span class="badge-new">Novo</span></h2>
           <p class="section-desc reveal">
-            Registre treinamentos e avaliações da equipe, controle a ciência de documentos e SOPs, trate não-conformidades com plano de ação (CAPA) e organize auditorias internas de qualidade — tudo com data, hora, responsável e status até o fechamento.
+            Registre treinamentos e avaliações da equipe, controle a ciência de documentos e SOPs, trate não-conformidades com plano de ação (CAPA) e organize auditorias internas de qualidade. Cada etapa mantém data, hora, responsável e status até o fechamento.
           </p>
 
           <div class="grid-2" style="text-align: left">
             <div class="panel pad reveal">
               <h3>Do treinamento ao fechamento da não-conformidade</h3>
               <p>
-                Cadastre treinamentos obrigatórios por função, estudo ou centro, registre a participação e a avaliação de cada membro da equipe, com validade e alerta de renovação. O módulo não emite certificado — o registro serve como trilha e evidência interna do que foi realizado.
+                Cadastre treinamentos obrigatórios por função, estudo ou centro, registre a participação e a avaliação de cada membro da equipe, com validade e alerta de renovação. O módulo não emite certificado; o registro serve como trilha e evidência interna do que foi realizado.
               </p>
               <p>
                 Documentos e SOPs ficam centralizados com versionamento e registro individual de ciência: cada colaborador confirma que leu e entendeu a versão vigente, com data e hora. Não-conformidades e achados de auditoria seguem o mesmo padrão de plano de ação, prazo e status até a validação do fechamento.
@@ -1276,7 +1433,7 @@
                   <div class="dot" aria-hidden="true">🎓</div>
                   <div>
                     <h5>Treinamento e avaliação da equipe</h5>
-                    <p>Vincule treinamentos a função, estudo ou centro, registre participação e avaliação, com validade e alerta de renovação — sem emissão de certificado.</p>
+                    <p>Vincule treinamentos a função, estudo ou centro e registre participação e avaliação, com validade e alerta de renovação. O módulo não emite certificado.</p>
                   </div>
                 </div>
                 <div class="list-item">
@@ -1301,7 +1458,7 @@
             <div class="card reveal">
               <div class="icon" aria-hidden="true">🎓</div>
               <h4>Treinamentos da equipe</h4>
-              <p>Registro de participação e avaliação por função, estudo ou centro, com validade e alerta de renovação. Sem emissão de certificado — é trilha e evidência interna.</p>
+              <p>Registro de participação e avaliação por função, estudo ou centro, com validade e alerta de renovação. Sem emissão de certificado, funcionando como trilha e evidência interna.</p>
             </div>
             <div class="card reveal d1">
               <div class="icon" aria-hidden="true">📄</div>
@@ -1316,7 +1473,7 @@
             <div class="card reveal d3">
               <div class="icon" aria-hidden="true">🔍</div>
               <h4>Auditoria interna de qualidade</h4>
-              <p>Checklists de auditoria interna, achados e trilha até a resolução — independente da monitoria do patrocinador.</p>
+              <p>Checklists de auditoria interna, achados e trilha até a resolução, de forma independente da monitoria do patrocinador.</p>
             </div>
           </div>
         </div>
@@ -1399,7 +1556,7 @@
           <span class="eyebrow reveal">Patrocinadores, CRO &amp; Indústria</span>
           <h2 class="section-title reveal">Sponsor Command Center: o cockpit executivo do seu estudo</h2>
           <p class="section-desc reveal">
-            Um cockpit consolidado com a saúde financeira, operacional e de risco dos estudos e centros participantes — para patrocinador, CRO e indústria acompanharem a execução sem depender de relatório manual do centro.
+            Um cockpit consolidado com a saúde financeira, operacional e de risco dos estudos e centros participantes. Assim, patrocinador, CRO e indústria acompanham a execução sem depender de relatório manual do centro.
           </p>
 
           <div class="hero-metrics" aria-label="Resumo financeiro do Command Center (exemplo ilustrativo)" style="margin-top: 34px; max-width: none">
@@ -1417,7 +1574,7 @@
             </div>
             <div class="metric reveal d3">
               <strong>Saldo disponível</strong>
-              <span>Budget menos provisionado e pago — com alerta automático se o centro ultrapassar o orçamento.</span>
+              <span>Budget menos valores provisionados e pagos, com alerta automático se o centro ultrapassar o orçamento.</span>
             </div>
           </div>
 
@@ -1425,7 +1582,7 @@
             <div class="panel pad reveal">
               <h3>9 KPIs de metas e ativação por centro</h3>
               <p>
-                Meta e realizado de recrutamento e randomização, conversão triagem → randomização, ativação de centros no prazo, atraso médio de ativação, orçamento planejado, custo real por participante e variação planejado × realizado — tudo comparável entre centros, com ranking de melhores e piores performances.
+                Meta e realizado de recrutamento e randomização, conversão triagem → randomização, ativação de centros no prazo, atraso médio de ativação, orçamento planejado, custo real por participante e variação entre planejado e realizado. Todos esses dados podem ser comparados entre centros, com ranking de melhores e piores performances.
               </p>
               <p>
                 Cada centro recebe um status de risco (no prazo, atenção, em risco, crítico ou acima do budget), calculado automaticamente a partir do consumo financeiro e da meta de participantes.
@@ -1435,7 +1592,7 @@
             <div class="panel pad reveal d1">
               <h3>Ações que exigem atenção</h3>
               <p style="margin-bottom: 16px">
-                Alertas automáticos apontam exatamente onde agir, com severidade e impacto financeiro estimado — sem precisar caçar o problema em planilhas.
+                Alertas automáticos apontam exatamente onde agir, com severidade e impacto financeiro estimado, sem exigir buscas em várias planilhas.
               </p>
               <div class="list" style="padding: 0; gap: 10px">
                 <div class="list-item" style="align-items: center">
@@ -1552,7 +1709,7 @@
           <span class="eyebrow reveal">Orçamentos &amp; Negociação</span>
           <h2 class="section-title reveal">Envie orçamentos por link seguro e receba resposta sem burocracia</h2>
           <p class="section-desc reveal">
-            Crie a negociação, defina o envelope por centro e envie um convite por e-mail com link individual. O centro responde direto pelo link — sem precisar de login — e tudo fica registrado e auditável.
+            Crie a negociação, defina o envelope por centro e envie um convite por e-mail com link individual. O centro responde diretamente pelo link, sem precisar de login, e tudo fica registrado para auditoria.
           </p>
 
           <div class="grid-2" style="text-align: left">
@@ -1577,7 +1734,7 @@
                   <div class="step-num" aria-hidden="true"></div>
                   <div>
                     <h5>O centro responde sem login</h5>
-                    <p>Pelo link, o centro aceita a proposta, solicita ajuste de valor ou recusa — com justificativa.</p>
+                    <p>Pelo link, o centro aceita a proposta, solicita ajuste de valor ou recusa e informa a justificativa.</p>
                   </div>
                 </div>
                 <div class="step-item">
@@ -1610,7 +1767,7 @@
                   <div class="dot" aria-hidden="true">👣</div>
                   <div>
                     <h5>Rastreamento de acesso</h5>
-                    <p>Abertura, IP, navegador e data da resposta registrados — cada link só pode ser respondido uma única vez.</p>
+                    <p>Abertura, IP, navegador e data da resposta ficam registrados. Cada link só pode ser respondido uma única vez.</p>
                   </div>
                 </div>
               </div>
@@ -1777,7 +1934,7 @@
                 <div class="dot" aria-hidden="true">📍</div>
                 <div>
                   <b>Localização</b>
-                  <span>São Paulo - SP | Brasil</span>
+                  <span>São Paulo, SP | Brasil</span>
                 </div>
               </div>
 
@@ -1805,8 +1962,8 @@
 
               <form action="https://api.web3forms.com/submit" method="POST">
                 <input type="hidden" name="access_key" value="58f66871-880e-4ded-9111-8209940646e5" />
-                <input type="hidden" name="subject" value="Novo contato - Healthuture Solutions" />
-                <input type="hidden" name="from_name" value="Healthuture Solutions - Site" />
+                <input type="hidden" name="subject" value="Novo contato da Healthuture Solutions" />
+                <input type="hidden" name="from_name" value="Site da Healthuture Solutions" />
                 <input type="hidden" name="redirect" value="https://www.healthuturesolutions.com.br/obrigado.html" />
                 <input type="checkbox" name="botcheck" style="display: none" />
 
@@ -1888,7 +2045,7 @@
           <a href="politica-de-privacidade.html" target="_blank" rel="noopener">Política de Privacidade</a>
           <a href="termos-de-uso.html" target="_blank" rel="noopener">Termos de Uso</a>
           <a href="mailto:contato@healthuturesolutions.com.br">contato@healthuturesolutions.com.br</a>
-          <a href="#">São Paulo - SP | Brasil</a>
+          <a href="#">São Paulo, SP | Brasil</a>
         </div>
 
         <div class="footer-col">
@@ -1906,16 +2063,30 @@
       // ===== Menu mobile =====
       const hamb = document.getElementById("hamb");
       const menu = document.getElementById("mobileMenu");
+      const hambLabel = hamb?.querySelector(".hamb-label");
 
       function setMenuOpen(open) {
         if (!hamb || !menu) return;
         menu.classList.toggle("is-open", open);
         hamb.setAttribute("aria-expanded", open ? "true" : "false");
-        hamb.textContent = open ? "Fechar" : "Menu";
+        hamb.setAttribute("aria-label", open ? "Fechar menu" : "Abrir menu");
+        menu.setAttribute("aria-hidden", open ? "false" : "true");
+        if (hambLabel) hambLabel.textContent = open ? "Fechar" : "Menu";
       }
       hamb?.addEventListener("click", () => setMenuOpen(!menu.classList.contains("is-open")));
       menu?.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => setMenuOpen(false)));
-      document.addEventListener("keydown", (e) => { if (e.key === "Escape") setMenuOpen(false); });
+      document.addEventListener("pointerdown", (e) => {
+        if (menu?.classList.contains("is-open") && !e.target.closest(".topbar")) setMenuOpen(false);
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && menu?.classList.contains("is-open")) {
+          setMenuOpen(false);
+          hamb?.focus();
+        }
+      });
+      window.addEventListener("resize", () => {
+        if (window.innerWidth > 992 && menu?.classList.contains("is-open")) setMenuOpen(false);
+      }, { passive: true });
 
       // ===== Barra de progresso de leitura =====
       const progress = document.getElementById("progress");
@@ -1926,6 +2097,20 @@
       }
       document.addEventListener("scroll", updateProgress, { passive: true });
       updateProgress();
+
+      // ===== Seção atual na navegação =====
+      const navLinks = document.querySelectorAll('.nav a[href^="#"], .mobile-menu a[href^="#"]');
+      const sections = [...document.querySelectorAll("main section[id]")];
+      if ("IntersectionObserver" in window && sections.length) {
+        const navObserver = new IntersectionObserver((entries) => {
+          const visible = entries
+            .filter((entry) => entry.isIntersecting)
+            .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+          if (!visible) return;
+          navLinks.forEach((link) => link.classList.toggle("is-active", link.getAttribute("href") === `#${visible.target.id}`));
+        }, { rootMargin: "-22% 0px -62% 0px", threshold: [0, .15, .4] });
+        sections.forEach((section) => navObserver.observe(section));
+      }
 
       // ===== Reveal ao rolar =====
       const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
